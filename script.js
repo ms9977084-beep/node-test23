@@ -2,21 +2,21 @@ const menuData = [
     { 
         name: "따뜻한 아메리카노", 
         img: "americano.jpg",
-        description: "따뜻하고 쓴맛이 나는 커피예요.",
+        description: "따뜻한 아메리카노 입니다. 따뜻하고 쓴맛이 나는 커피예요.",
         price: "4000원", // 음성 안내를 위해 가격 텍스트 추가
         priceImg: "money_4000.jpg"
     },
     { 
         name: "카페라떼", 
         img: "latte.jpg",
-        description: "우유가 들어가서 부드러운 커피예요.",
+        description: "카페라떼 입니다. 우유가 들어가서 부드러운 커피예요.",
         price: "4500원",
         priceImg: "money_4500.jpg"
     },
     { 
         name: "초코라떼", 
         img: "choco.jpg",
-        description: "달콤하고 맛있는 초코 우유예요.",
+        description: "초코라떼 입니다. 달콤하고 맛있는 초코 우유예요.",
         price: "4800원",
         priceImg: "money_4800.jpg"
     }
@@ -89,3 +89,4 @@ closeDetailBtn.onclick = () => {
     menuDiv.classList.remove('hidden');
     window.speechSynthesis.cancel(); // 뒤로 갈 때 음성 끄기 (선택사항)
 };
+
