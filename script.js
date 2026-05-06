@@ -2,91 +2,126 @@ const menuData = [
     {
         name: "따뜻한 아메리카노",
         img: "americano.jpg",
-        description: "따뜻하고 쓴맛이 나는 커피예요.",
-        price: "4000원", // 음성 안내를 위해 가격 텍스트 추가
-        priceImg: "money_4000.jpg"
+        description: "커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",
+        priceImg: "money_4000.jpg",
+        orderText: "따뜻한 아메리카노 한잔 주세요"
     },
     {
         name: "카페라떼",
         img: "latte.jpg",
-        description: "우유가 들어가서 부드러운 커피예요.",
-        price: "4500원",
-        priceImg: "money_4500.jpg"
+        description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
+        priceImg: "money_4500.jpg",
+        orderText: "따뜻한 카페라떼 한잔 주세요"
     },
     {
         name: "초코라떼",
         img: "choco.jpg",
-        description: "달콤하고 맛있는 초코 우유예요.",
-        price: "4800원",
-        priceImg: "money_4800.jpg"
+        description: "초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.",
+        priceImg: "money_4800.jpg",
+        orderText: "따뜻한 초코라떼 한잔 주세요"
     }
 ];
 
-const viewMenuBtn = document.getElementById('view-menu');
+// 굿즈 데이터 (원하시는 굿즈로 수정하세요)
+const goodsData = [
+    { name: "텀블러", img: "goods_tumbler.jpg", price: "12,000원" },
+    { name: "에코백", img: "goods_bag.jpg", price: "8,000원" },
+    { name: "모자", img: "goods_hat.jpg", price: "15,000원" },
+    { name: "키링", img: "goods_keyring.jpg", price: "5,000원" }
+];
+
+// 요소 선택
+const mainPage = document.getElementById('main-page');
 const menuDiv = document.getElementById('menu');
 const menuList = document.getElementById('menu-list');
 const detailView = document.getElementById('detail-view');
 const detailDesc = document.getElementById('detail-desc');
 const detailPriceImg = document.getElementById('detail-price-img');
 const closeDetailBtn = document.getElementById('close-detail');
-const mainPage = document.getElementById('main-page');
+const orderBtn = document.getElementById('order-btn');
+const speechBubble = document.getElementById('speech-bubble');
+const goodsDiv = document.getElementById('goods');
+const goodsList = document.getElementById('goods-list');
 
-// --- TTS 음성 출력 함수 추가 ---
-function speak(text) {
-    // 이전 음성이 나오고 있다면 취소
-    window.speechSynthesis.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ko-KR'; // 한국어 설정
-    utterance.rate = 0.9;     // 속도 (조금 천천히)
-    window.speechSynthesis.speak(utterance);
-}
+let currentOrderText = '';
 
-// 1. 메뉴판 보기 버튼 이벤트
-viewMenuBtn.addEventListener('click', () => {
-    mainPage.classList.add('hidden');
-    menuDiv.classList.remove('hidden');
+// ── 초기화면 버튼 ──
+document.getElementById('view-menu').addEventListener('click', () => {
+    showPage(menuDiv);
     renderMenuList();
-    
-    // 음성 안내 시작
-    speak("드시고 싶은 메뉴를 눌러주세요.");
 });
 
-// 2. 메뉴 목록 생성
+document.getElementById('view-goods').addEventListener('click', () => {
+    showPage(goodsDiv);
+    renderGoodsList();
+});
+
+// ── 뒤로 가기 버튼들 ──
+document.getElementById('menu-back').addEventListener('click', () => showPage(mainPage));
+document.getElementById('goods-back').addEventListener('click', () => showPage(mainPage));
+
+closeDetailBtn.addEventListener('click', () => {
+    showPage(menuDiv);
+    speechBubble.classList.add('hidden');
+});
+
+// ── 메뉴 목록 렌더링 ──
 function renderMenuList() {
     menuList.innerHTML = '';
     menuData.forEach(item => {
-        const menuCard = document.createElement('div');
-        menuCard.className = 'menu-card';
-        menuCard.innerHTML = `
-            <img src="${item.img}" alt="${item.name}" style="width:100%; border-radius:10px; margin-bottom:10px;">
-            <h3 style="font-size:1.5rem;">${item.name}</h3>
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+            <img src="${item.img}" alt="${item.name}"
+                style="width:120px; height:120px; border-radius:10px; object-fit:cover;">
+            <h3>${item.name}</h3>
         `;
-        menuCard.onclick = () => showDetail(item);
-        menuList.appendChild(menuCard);
+        card.onclick = () => showDetail(item);
+        menuList.appendChild(card);
     });
 }
 
-// 3. 상세 정보 보여주기
+// ── 굿즈 목록 렌더링 ──
+function renderGoodsList() {
+    goodsList.innerHTML = '';
+    goodsData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+            <img src="${item.img}" alt="${item.name}"
+                style="width:120px; height:120px; border-radius:10px; object-fit:cover;">
+            <h3>${item.name}</h3>
+            <p style="margin:4px 0 0; font-size:1rem; color:#888;">${item.price}</p>
+        `;
+        goodsList.appendChild(card);
+    });
+}
+
+// ── 상세 보기 ──
 function showDetail(item) {
     detailDesc.innerText = item.description;
     detailPriceImg.src = item.priceImg;
-    
-    // 화면 전환
-    detailView.classList.remove('hidden');
-    menuDiv.classList.add('hidden');
-    
-    // 상세 음성 안내 (요청하신 형식)
-    const message = `${item.name} 입니다. ${item.description} 가격은 ${item.price}입니다.`;
-    speak(message);
-
-    console.log("선택된 가격 이미지 경로:", item.priceImg);
+    currentOrderText = item.orderText;
+    speechBubble.classList.add('hidden');
+    showPage(detailView);
 }
 
-// 4. 상세 정보 닫기
-closeDetailBtn.onclick = () => {
-    detailView.classList.add('hidden');
-    menuDiv.classList.remove('hidden');
-    // 다시 메뉴 목록으로 돌아올 때 안내
-    speak("다른 메뉴도 살펴보세요.");
-};
+// ── 주문 버튼: TTS 음성 출력 ──
+orderBtn.addEventListener('click', () => {
+    speechBubble.textContent = '🔊 "' + currentOrderText + '"';
+    speechBubble.classList.remove('hidden');
+
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(currentOrderText);
+        utterance.lang = 'ko-KR';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    }
+});
+
+// ── 화면 전환 헬퍼 ──
+function showPage(targetEl) {
+    [mainPage, menuDiv, detailView, goodsDiv].forEach(el => el.classList.add('hidden'));
+    targetEl.classList.remove('hidden');
+}
