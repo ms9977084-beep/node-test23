@@ -7,26 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- 초기 화면 -->
     <main id="main-page">
         <h1>환영합니다!</h1>
-        <p>아래 버튼을 누르면 메뉴판이 나옵니다.</p>
-        <button id="view-menu" class="big-btn">메뉴판 보기</button>
+        <p>아래 버튼을 누르면 이동합니다.</p>
+        <button id="view-menu">☕ 메뉴판 보기</button>
+        <button id="view-goods">🎁 굿즈(기념 물건) 보기</button>
     </main>
 
+    <!-- 메뉴판 화면 -->
     <div id="menu" class="hidden">
-        <h2>드시고 싶은 메뉴를 눌러주세요</h2>
+        <h2>메뉴를 선택하세요</h2>
         <div id="menu-list"></div>
+        <button class="back-btn" id="menu-back">◀ 뒤로 가기</button>
     </div>
 
+    <!-- 메뉴 상세 화면 -->
     <div id="detail-view" class="hidden">
-        <div id="detail-container">
+        <button id="close-detail">◀ 뒤로 가기</button>
+        <div id="detail-content">
             <p id="detail-desc"></p>
-            <div class="price-box">
-                <p>가격은 이만큼이에요:</p>
-                <img id="detail-price-img" src="" alt="가격 이미지">
-            </div>
-            <button id="close-detail">뒤로 가기</button>
+            <img id="detail-price-img" src="" alt="가격 이미지"
+                style="max-width: 100%; height: auto; border-radius: 10px;">
         </div>
+        <!-- 말풍선: 주문 음성 출력 표시 -->
+        <div id="speech-bubble" class="hidden">🔊 소리가 나오고 있어요!</div>
+        <div class="detail-btn-row">
+            <button id="order-btn">
+                <img src="want_icon.jpg" alt="먹고싶어요 아이콘" class="order-icon">
+                <span>주문할래요<br><small>(먹고싶어요)</small></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 굿즈 화면 -->
+    <div id="goods" class="hidden">
+        <h2>굿즈(기념 물건)</h2>
+        <div id="goods-list"></div>
+        <button class="back-btn" id="goods-back">◀ 뒤로 가기</button>
     </div>
 
     <script src="script.js"></script>
