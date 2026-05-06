@@ -1,86 +1,130 @@
 /* 기본 스타일 */
-body { 
-    font-family: 'Nanum Gothic', sans-serif; 
-    text-align: center; 
-    background-color: #fdf6e3; 
-    margin: 0; padding: 20px; 
-    line-height: 1.6;
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+    background-color: #fdf6e3;
+    margin: 0;
+    padding: 20px;
 }
 
-/* 숨김 처리 */
 .hidden { display: none !important; }
 
-/* 큰 버튼 스타일 */
-.big-btn {
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    background-color: #ff9f43;
+/* 초기화면 버튼 */
+#view-menu, #view-goods {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 14px auto;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+}
+#view-menu  { background: #f4a261; color: white; }
+#view-goods { background: #74b9a4; color: white; }
+
+/* 뒤로 가기 버튼 */
+.back-btn {
+    margin-top: 20px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    background: #aaaaaa;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-/* 메뉴 카드 디자인 */
+/* 메뉴/굿즈 카드 */
 .menu-card {
     background: white;
-    border: 3px solid #ee5253;
+    border: 2px solid #ddd;
     border-radius: 20px;
-    padding: 20px;
-    margin: 15px;
+    padding: 15px;
+    margin: 10px;
     display: inline-block;
-    width: 220px;
+    width: 180px;
     cursor: pointer;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.menu-card:active { transform: scale(0.95); }
-
-/* 상세 보기 레이아웃 */
+/* 상세 화면 */
 #detail-view {
-    position: fixed; 
-    top: 0; left: 0; 
+    position: fixed;
+    top: 0; left: 0;
     width: 100%; height: 100%;
-    background: #ffffff; 
-    z-index: 1000;
-    overflow-y: auto;
-}
-
-#detail-container {
-    padding: 40px 20px;
+    background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #detail-desc {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     word-break: keep-all;
-    background: #fff3f3;
-    padding: 20px;
-    border-radius: 15px;
 }
 
-.price-box p { font-size: 1.2rem; font-weight: bold; color: #555; }
-
-#detail-price-img {
-    max-width: 90%;
-    height: auto;
-    border: 5px solid #10ac84;
-    border-radius: 20px;
-    margin-bottom: 30px;
+/* 상세화면 하단 버튼 행 */
+.detail-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
 }
 
+/* 뒤로가기 (상세화면) */
 #close-detail {
-    padding: 20px 50px;
-    font-size: 1.5rem;
-    background: #54a0ff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: #ff6b6b;
     color: white;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+/* 주문 버튼 */
+#order-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #f4a261;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* 주문 버튼 안의 이미지 */
+.order-icon {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: white;
+    flex-shrink: 0;
+}
+
+/* 음성 출력 말풍선 */
+#speech-bubble {
+    background: #e8f4f0;
+    border: 2px solid #74b9a4;
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 12px auto;
+    max-width: 320px;
 }
