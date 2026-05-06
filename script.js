@@ -3,23 +3,74 @@ const menuData = [
         name: "따뜻한 아메리카노",
         img: "americano.jpg",
         description: "커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",
-        priceImg: "money_2000.jpg",
+        priceImg: "money_4000.jpg",
         orderText: "따뜻한 아메리카노 한잔 주세요"
     },
-    {
-        name: "카페라떼",
-        img: "latte.jpg",
-        description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
-        priceImg: "money_3000.jpg",
-        orderText: "따뜻한 카페라떼 한잔 주세요"
+ {
+        name: "시원한 아메리카노",
+        img: "iceamericano.jpg",
+        description: "커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",
+        priceImg: "money_4000.jpg",
+        orderText: "시원한 아메리카노 한잔 주세요"
     },
     {
-        name: "초코라떼",
+        name: "따뜻한 카페라떼",
+        img: "latte.jpg",
+        description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
+        priceImg: "money_4500.jpg",
+        orderText: "따뜻한 카페라떼 한잔 주세요"
+    },
+ {
+        name: "시원한 카페라떼",
+        img: "Icecafelatte.jpg",
+        description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
+        priceImg: "money_4500.jpg",
+        orderText: "시원한 카페라떼 한잔 주세요"
+    },
+    {
+        name: "따뜻한 초코라떼",
         img: "choco.jpg",
         description: "초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.",
-        priceImg: "money_3500.jpg",
+        priceImg: "money_4800.jpg",
         orderText: "따뜻한 초코라떼 한잔 주세요"
-    }
+    },
+ {
+        name: "시원한 초코라떼",
+        img: "Icechoco.jpg",
+        description: "초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.",
+        priceImg: "money_4800.jpg",
+        orderText: "시원한 초코라떼 한잔 주세요"
+    },
+ {
+        name: "따뜻한 녹차라떼",
+        img: "greentealatte.jpg",
+        description: "녹차분말과 우유가 들어간 따뜻한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다",
+        priceImg: "money_4000.jpg",
+        orderText: "따뜻한 녹차라떼 한잔 주세요"
+    },
+ {
+        name: "시원한 녹차라떼",
+        img: "Icegreentealatte.jpg",
+        description: "녹차분말과 우유가 들어간 따뜻한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다.",
+        priceImg: "money_4000.jpg",
+        orderText: "시원한 녹차라떼 한잔 주세요"
+    },
+{
+        name: "따뜻한 바닐라라떼",
+        img: "vanila.jpg",
+        description: "바닐라시럽과 우유가 들어간 따뜻한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",
+        priceImg: "money_3500.jpg",
+        orderText: "따뜻한 바닐라라떼 한잔 주세요"
+    },
+{
+        name: "시원한 바닐라라떼",
+        img: "icevanila.jpg",
+        description: "바닐라시럽과 우유가 들어간 따뜻한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",
+        priceImg: "money_3500.jpg",
+        orderText: "시원한 바닐라라떼 한잔 주세요"
+    },
+
+
 ];
 
 // 굿즈 데이터 (원하시는 굿즈로 수정하세요)
