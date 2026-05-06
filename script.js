@@ -65,7 +65,7 @@ const menuData = [
 {
         name: "시원한 바닐라라떼",
         img: "icevanila.jpg",
-        description: "바닐라시럽과 우유가 들어간 따뜻한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",
+        description: "바닐라시럽과 우유가 들어간 시원한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "시원한 바닐라라떼 한잔 주세요"
     },
