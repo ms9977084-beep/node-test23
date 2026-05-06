@@ -3,21 +3,21 @@ const menuData = [
         name: "따뜻한 아메리카노",
         img: "americano.jpg",
         description: "커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",
-        priceImg: "money_4000.jpg",
+        priceImg: "money_2000.jpg",
         orderText: "따뜻한 아메리카노 한잔 주세요"
     },
     {
         name: "카페라떼",
         img: "latte.jpg",
         description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
-        priceImg: "money_4500.jpg",
+        priceImg: "money_3000.jpg",
         orderText: "따뜻한 카페라떼 한잔 주세요"
     },
     {
         name: "초코라떼",
         img: "choco.jpg",
         description: "초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.",
-        priceImg: "money_4800.jpg",
+        priceImg: "money_3500.jpg",
         orderText: "따뜻한 초코라떼 한잔 주세요"
     }
 ];
