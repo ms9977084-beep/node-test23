@@ -43,14 +43,14 @@ const menuData = [
     },
     {
         name: "따뜻한 헤이즐넛라떼",
-        img: "hazelnut.png",
+        img: "hazelnut.jpg",
         description: "헤이즐넛시럽과 우유가 들어간 따뜻한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "따뜻한 헤이즐넛라떼 한잔 주세요"
     },
     {
         name: "시원한 헤이즐넛라떼",
-        img: "icehazelnut.png",
+        img: "icehazelnut.jpg",
         description: "헤이즐넛시럽과 우유가 들어간 시원한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "시원한 헤이즐넛라떼 한잔 주세요"
