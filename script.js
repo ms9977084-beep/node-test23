@@ -230,42 +230,42 @@ const goodsData = [
         name: "커피 드립백 10개",
         img: "drip10.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 10개 세트입니다.",
-        priceImg: "money_12000.jpg",
+        priceImg: "money_11000.jpg",
         orderText: "커피 드립백 10개 주세요"
     },
     {
         name: "커피 드립백 5개",
         img: "drip5.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 5개 세트입니다.",
-        priceImg: "money_7000.jpg",
+        priceImg: "money_4500.jpg",
         orderText: "커피 드립백 5개 주세요"
     },
     {
         name: "에코백",
         img: "eco.jpg",
-        description: "카페 로고가 그려진 예쁜 에코백입니다.",
-        priceImg: "money_8000.jpg",
+        description: "편리하고 예쁜 에코백입니다.",
+        priceImg: "money_9000.jpg",
         orderText: "에코백 주세요"
     },
     {
         name: "핸드폰 그립톡",
         img: "grip.jpg",
-        description: "카페 로고가 그려진 핸드폰 그립톡입니다.",
-        priceImg: "money_15000.jpg",
+        description: "귀여운 핸드폰 그립톡입니다.",
+        priceImg: "money_7000.jpg",
         orderText: "핸드폰 그립톡 주세요"
     },
     {
         name: "작은 키링",
         img: "smallkey.jpg",
-        description: "카페 로고가 새겨진 작은 키링입니다.",
+        description: "귀여운 작은 키링입니다.",
         priceImg: "money_4000.jpg",
         orderText: "작은 키링 하나 주세요"
     },
     {
         name: "큰 키링",
         img: "bigkey.jpg",
-        description: "카페 로고가 새겨진 큰 키링입니다.",
-        priceImg: "money_5000.jpg",
+        description: "귀여운 큰 키링입니다.",
+        priceImg: "money_6000.jpg",
         orderText: "큰 키링 하나 주세요"
     }
 ];
