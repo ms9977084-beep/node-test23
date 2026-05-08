@@ -22,7 +22,7 @@ const menuData = [
     },
     {
         name: "시원한 카페라떼",
-        img: "Icecafelatte.jpg",
+        img: "latte.jpg",
         description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
         priceImg: "money_3000.jpg",
         orderText: "시원한 카페라떼 한잔 주세요"
@@ -43,14 +43,14 @@ const menuData = [
     },
     {
         name: "따뜻한 헤이즐넛라떼",
-        img: "hazelnut.jpg",
+        img: "hazelnut.png",
         description: "헤이즐넛시럽과 우유가 들어간 따뜻한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "따뜻한 헤이즐넛라떼 한잔 주세요"
     },
     {
         name: "시원한 헤이즐넛라떼",
-        img: "icehazelnut.jpg",
+        img: "icehazelnut.png",
         description: "헤이즐넛시럽과 우유가 들어간 시원한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "시원한 헤이즐넛라떼 한잔 주세요"
@@ -230,42 +230,42 @@ const goodsData = [
         name: "커피 드립백 10개",
         img: "drip10.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 10개 세트입니다.",
-        priceImg: "money_11000.jpg",
+        priceImg: "money_12000.jpg",
         orderText: "커피 드립백 10개 주세요"
     },
     {
         name: "커피 드립백 5개",
         img: "drip5.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 5개 세트입니다.",
-        priceImg: "money_4500.jpg",
+        priceImg: "money_7000.jpg",
         orderText: "커피 드립백 5개 주세요"
     },
     {
         name: "에코백",
         img: "eco.jpg",
-        description: "편리하고 예쁜 에코백입니다.",
-        priceImg: "money_9000.jpg",
+        description: "카페 로고가 그려진 예쁜 에코백입니다.",
+        priceImg: "money_8000.jpg",
         orderText: "에코백 주세요"
     },
     {
         name: "핸드폰 그립톡",
         img: "grip.jpg",
-        description: "귀여운 핸드폰 그립톡입니다.",
-        priceImg: "money_7000.jpg",
+        description: "카페 로고가 그려진 핸드폰 그립톡입니다.",
+        priceImg: "money_15000.jpg",
         orderText: "핸드폰 그립톡 주세요"
     },
     {
         name: "작은 키링",
         img: "smallkey.jpg",
-        description: "귀여운 작은 키링입니다.",
+        description: "카페 로고가 새겨진 작은 키링입니다.",
         priceImg: "money_4000.jpg",
         orderText: "작은 키링 하나 주세요"
     },
     {
         name: "큰 키링",
         img: "bigkey.jpg",
-        description: "귀여운 큰 키링입니다.",
-        priceImg: "money_6000.jpg",
+        description: "카페 로고가 새겨진 큰 키링입니다.",
+        priceImg: "money_5000.jpg",
         orderText: "큰 키링 하나 주세요"
     }
 ];
@@ -286,8 +286,8 @@ const goodsDiv       = document.getElementById('goods');
 const goodsList      = document.getElementById('goods-list');
 
 let currentOrderText = '';
-let previousPage     = null;   // 상세에서 돌아갈 페이지 (menuDiv or goodsDiv)
-let savedScrollY     = 0;      // 메뉴/굿즈 스크롤 위치 저장
+let previousPage     = null;
+let savedScrollY     = 0;
 
 // ── TTS 헬퍼 ──
 function speak(text) {
@@ -299,16 +299,14 @@ function speak(text) {
     window.speechSynthesis.speak(utter);
 }
 
+// ── 페이지 진입 환영 TTS (모바일 대응) ──
 window.addEventListener('load', () => {
     const welcomeText = '환영합니다. 무엇을 주문하시겠습니까?';
-
-    // 버튼 두 개 중 하나를 처음 누를 때 환영 인사 발화
     const firstTouchHandler = () => {
         speak(welcomeText);
         document.getElementById('view-menu').removeEventListener('click', firstTouchHandler);
         document.getElementById('view-goods').removeEventListener('click', firstTouchHandler);
     };
-
     document.getElementById('view-menu').addEventListener('click', firstTouchHandler);
     document.getElementById('view-goods').addEventListener('click', firstTouchHandler);
 });
@@ -343,7 +341,6 @@ closeDetailBtn.addEventListener('click', () => {
     window.speechSynthesis.cancel();
     speechBubble.classList.add('hidden');
     showPage(previousPage);
-    // 다음 프레임에서 스크롤 복원 (렌더링 후 적용)
     requestAnimationFrame(() => {
         window.scrollTo(0, savedScrollY);
     });
@@ -361,7 +358,7 @@ function renderMenuList() {
             <h3>${item.name}</h3>
         `;
         card.onclick = () => {
-            savedScrollY = window.scrollY;   // 스크롤 위치 저장
+            savedScrollY = window.scrollY;
             previousPage = menuDiv;
             showDetail(item, '주문할래요', '(먹고싶어요)');
         };
@@ -381,7 +378,7 @@ function renderGoodsList() {
             <h3>${item.name}</h3>
         `;
         card.onclick = () => {
-            savedScrollY = window.scrollY;   // 스크롤 위치 저장
+            savedScrollY = window.scrollY;
             previousPage = goodsDiv;
             showDetail(item, '구매할래요', '(갖고싶어요)');
         };
@@ -391,35 +388,4 @@ function renderGoodsList() {
 
 // ── 상세 보기 (메뉴·굿즈 공통) ──
 function showDetail(item, btnMain, btnSub) {
-    detailDesc.innerText     = item.description;
-    detailMenuImg.src        = item.img;
-    detailMenuImg.alt        = item.name;
-    detailPriceImg.src       = item.priceImg;
-    currentOrderText         = item.orderText;
-
-    // 버튼 라벨 변경
-    orderBtnLabel.innerHTML  = `${btnMain}<br><small>${btnSub}</small>`;
-
-    speechBubble.classList.add('hidden');
-    showPage(detailView);
-
-    // description TTS 자동 읽기
-    speak(item.description);
-}
-
-// ── 주문/구매 버튼 TTS ──
-orderBtn.addEventListener('click', () => {
-    speechBubble.textContent = '🔊 "' + currentOrderText + '"';
-    speechBubble.classList.remove('hidden');
-    speak(currentOrderText);
-});
-
-// ── 화면 전환 헬퍼 ──
-function showPage(targetEl) {
-    [mainPage, menuDiv, detailView, goodsDiv].forEach(el => el.classList.add('hidden'));
-    targetEl.classList.remove('hidden');
-    // 목록 페이지로 돌아갈 때가 아닌 경우 맨 위로 이동
-    if (targetEl !== menuDiv && targetEl !== goodsDiv) {
-        window.scrollTo(0, 0);
-    }
-}
+    detailDesc.innerText     = item.desc
