@@ -388,4 +388,29 @@ function renderGoodsList() {
 
 // ── 상세 보기 (메뉴·굿즈 공통) ──
 function showDetail(item, btnMain, btnSub) {
-    detailDesc.innerText     = item.desc
+    detailDesc.innerText     = item.description;
+    detailMenuImg.src        = item.img;
+    detailMenuImg.alt        = item.name;
+    detailPriceImg.src       = item.priceImg;
+    currentOrderText         = item.orderText;
+    orderBtnLabel.innerHTML  = `${btnMain}<br><small>${btnSub}</small>`;
+    speechBubble.classList.add('hidden');
+    showPage(detailView);
+    speak(item.description);
+}
+
+// ── 주문/구매 버튼 TTS ──
+orderBtn.addEventListener('click', () => {
+    speechBubble.textContent = '🔊 "' + currentOrderText + '"';
+    speechBubble.classList.remove('hidden');
+    speak(currentOrderText);
+});
+
+// ── 화면 전환 헬퍼 ──
+function showPage(targetEl) {
+    [mainPage, menuDiv, detailView, goodsDiv].forEach(el => el.classList.add('hidden'));
+    targetEl.classList.remove('hidden');
+    if (targetEl !== menuDiv && targetEl !== goodsDiv) {
+        window.scrollTo(0, 0);
+    }
+}
