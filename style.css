@@ -56,6 +56,7 @@ body {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: white;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,6 +71,25 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     word-break: keep-all;
+}
+
+/* 상세화면 이미지 두 장 나란히 */
+#detail-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+#detail-menu-img,
+#detail-price-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #f9f9f9;
 }
 
 /* 상세화면 하단 버튼 행 */
@@ -92,29 +112,30 @@ body {
     cursor: pointer;
 }
 
-/* 주문 버튼 */
+/* 주문 버튼 — 돈 사진 절반 크기(140px)로 확대 */
 #order-btn {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 14px 22px;
-    font-size: 1.2rem;
+    padding: 20px 30px;
+    font-size: 1.4rem;
     font-weight: bold;
     background: #f4a261;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 14px;
     cursor: pointer;
+    min-width: 160px;
 }
 
-/* 주문 버튼 안의 이미지 */
+/* 주문 버튼 안 아이콘 — 140px */
 .order-icon {
-    width: 52px;
-    height: 52px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 10px;
     background: white;
-    flex-shrink: 0;
 }
 
 /* 음성 출력 말풍선 */
