@@ -23,29 +23,30 @@
         <button class="back-btn" id="menu-back">◀ 뒤로 가기</button>
     </div>
 
-    <!-- 메뉴 상세 화면 -->
+    <!-- 굿즈 화면 -->
+    <div id="goods" class="hidden">
+        <h2>물건을 선택하세요</h2>
+        <div id="goods-list"></div>
+        <button class="back-btn" id="goods-back">◀ 뒤로 가기</button>
+    </div>
+
+    <!-- 메뉴/굿즈 상세 화면 (공통) -->
     <div id="detail-view" class="hidden">
         <button id="close-detail">◀ 뒤로 가기</button>
         <div id="detail-content">
             <p id="detail-desc"></p>
-            <img id="detail-price-img" src="" alt="가격 이미지"
-                style="max-width: 100%; height: auto; border-radius: 10px;">
+            <div id="detail-images">
+                <img id="detail-menu-img" src="" alt="메뉴 이미지">
+                <img id="detail-price-img" src="" alt="가격 이미지">
+            </div>
         </div>
-        <!-- 말풍선: 주문 음성 출력 표시 -->
         <div id="speech-bubble" class="hidden">🔊 소리가 나오고 있어요!</div>
         <div class="detail-btn-row">
             <button id="order-btn">
                 <img src="want_icon.jpg" alt="먹고싶어요 아이콘" class="order-icon">
-                <span>주문할래요<br><small>(먹고싶어요)</small></span>
+                <span id="order-btn-label">주문할래요<br><small>(먹고싶어요)</small></span>
             </button>
         </div>
-    </div>
-
-    <!-- 굿즈 화면 -->
-    <div id="goods" class="hidden">
-        <h2>굿즈(기념 물건)</h2>
-        <div id="goods-list"></div>
-        <button class="back-btn" id="goods-back">◀ 뒤로 가기</button>
     </div>
 
     <script src="script.js"></script>
