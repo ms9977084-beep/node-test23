@@ -299,18 +299,18 @@ function speak(text) {
     window.speechSynthesis.speak(utter);
 }
 
-// ── 페이지 진입 TTS ──
 window.addEventListener('load', () => {
-    // 일부 브라우저는 사용자 인터랙션 없이 TTS를 막으므로
-    // 첫 클릭 시 한 번만 발화하도록 처리
-    const welcomeHandler = () => {
-        speak('환영합니다. 무엇을 주문하시겠습니까?');
-        document.body.removeEventListener('click', welcomeHandler, true);
+    const welcomeText = '환영합니다. 무엇을 주문하시겠습니까?';
+
+    // 버튼 두 개 중 하나를 처음 누를 때 환영 인사 발화
+    const firstTouchHandler = () => {
+        speak(welcomeText);
+        document.getElementById('view-menu').removeEventListener('click', firstTouchHandler);
+        document.getElementById('view-goods').removeEventListener('click', firstTouchHandler);
     };
-    // 자동 시도 (지원되는 환경)
-    speak('환영합니다. 무엇을 주문하시겠습니까?');
-    // 막힌 경우를 대비해 첫 터치/클릭 시 재시도
-    document.body.addEventListener('click', welcomeHandler, true);
+
+    document.getElementById('view-menu').addEventListener('click', firstTouchHandler);
+    document.getElementById('view-goods').addEventListener('click', firstTouchHandler);
 });
 
 // ── 초기화면 버튼 ──
