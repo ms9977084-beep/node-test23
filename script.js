@@ -22,7 +22,7 @@ const menuData = [
     },
     {
         name: "시원한 카페라떼",
-        img: "Icecafelatte.jpg",
+        img: "latte.jpg",
         description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
         priceImg: "money_3000.jpg",
         orderText: "시원한 카페라떼 한잔 주세요"
@@ -43,14 +43,14 @@ const menuData = [
     },
     {
         name: "따뜻한 헤이즐넛라떼",
-        img: "hazelnut.jpg",
+        img: "hazelnut.png",
         description: "헤이즐넛시럽과 우유가 들어간 따뜻한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "따뜻한 헤이즐넛라떼 한잔 주세요"
     },
     {
         name: "시원한 헤이즐넛라떼",
-        img: "icehazelnut.jpg",
+        img: "icehazelnut.png",
         description: "헤이즐넛시럽과 우유가 들어간 시원한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",
         priceImg: "money_3500.jpg",
         orderText: "시원한 헤이즐넛라떼 한잔 주세요"
@@ -230,28 +230,28 @@ const goodsData = [
         name: "커피 드립백 10개",
         img: "drip10.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 10개 세트입니다.",
-        priceImg: "money_11000.jpg",
+        priceImg: "money_12000.jpg",
         orderText: "커피 드립백 10개 주세요"
     },
     {
         name: "커피 드립백 5개",
         img: "drip5.jpg",
         description: "집에서도 카페 커피를 즐길 수 있는 드립백 5개 세트입니다.",
-        priceImg: "money_4500.jpg",
+        priceImg: "money_7000.jpg",
         orderText: "커피 드립백 5개 주세요"
     },
     {
         name: "에코백",
         img: "eco.jpg",
         description: "카페 로고가 그려진 예쁜 에코백입니다.",
-        priceImg: "money_9000.jpg",
+        priceImg: "money_8000.jpg",
         orderText: "에코백 주세요"
     },
     {
         name: "핸드폰 그립톡",
         img: "grip.jpg",
         description: "카페 로고가 그려진 핸드폰 그립톡입니다.",
-        priceImg: "money_7000.jpg",
+        priceImg: "money_15000.jpg",
         orderText: "핸드폰 그립톡 주세요"
     },
     {
@@ -265,7 +265,7 @@ const goodsData = [
         name: "큰 키링",
         img: "bigkey.jpg",
         description: "카페 로고가 새겨진 큰 키링입니다.",
-        priceImg: "money_6000.jpg",
+        priceImg: "money_5000.jpg",
         orderText: "큰 키링 하나 주세요"
     }
 ];
@@ -285,9 +285,10 @@ const speechBubble   = document.getElementById('speech-bubble');
 const goodsDiv       = document.getElementById('goods');
 const goodsList      = document.getElementById('goods-list');
 
-let currentOrderText = '';
-let previousPage     = null;
-let savedScrollY     = 0;
+let currentOrderText  = '';
+let currentDescText   = '';
+let previousPage      = null;
+let savedScrollY      = 0;
 
 // ── TTS 헬퍼 ──
 function speak(text) {
@@ -322,6 +323,19 @@ document.getElementById('view-goods').addEventListener('click', () => {
     speak('물건을 선택하세요');
     showPage(goodsDiv);
     renderGoodsList();
+});
+
+// ── 다시 듣기 버튼 ──
+document.getElementById('menu-replay').addEventListener('click', () => {
+    speak('메뉴를 선택하세요');
+});
+
+document.getElementById('goods-replay').addEventListener('click', () => {
+    speak('물건을 선택하세요');
+});
+
+document.getElementById('detail-replay').addEventListener('click', () => {
+    speak(currentDescText);
 });
 
 // ── 뒤로 가기 (메뉴 → 초기화면) ──
@@ -393,6 +407,7 @@ function showDetail(item, btnMain, btnSub) {
     detailMenuImg.alt        = item.name;
     detailPriceImg.src       = item.priceImg;
     currentOrderText         = item.orderText;
+    currentDescText          = item.description;
     orderBtnLabel.innerHTML  = `${btnMain}<br><small>${btnSub}</small>`;
     speechBubble.classList.add('hidden');
     showPage(detailView);
