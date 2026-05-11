@@ -37,6 +37,22 @@ body {
     cursor: pointer;
 }
 
+/* 다시 듣기 버튼 */
+.replay-btn {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #5b9bd5;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
 /* 메뉴/굿즈 카드 */
 .menu-card {
     background: white;
@@ -71,7 +87,7 @@ body {
 #detail-desc {
     font-size: 1.4rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     word-break: keep-all;
 }
 
@@ -114,7 +130,7 @@ body {
     cursor: pointer;
 }
 
-/* 주문 버튼 — 돈 사진 절반 크기(140px)로 확대 */
+/* 주문 버튼 */
 #order-btn {
     display: flex;
     flex-direction: column;
@@ -131,7 +147,7 @@ body {
     min-width: 160px;
 }
 
-/* 주문 버튼 안 아이콘 — 140px */
+/* 주문 버튼 안 아이콘 */
 .order-icon {
     width: 140px;
     height: 140px;
