@@ -15,14 +15,14 @@ const menuData = [
     },
     {
         name: "따뜻한 카페라떼",
-        img: "Icecafelatte.jpg",
+        img: "latte.jpg",
         description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
         priceImg: "money_3000.jpg",
         orderText: "따뜻한 카페라떼 한잔 주세요"
     },
     {
         name: "시원한 카페라떼",
-        img: "latte.jpg",
+        img: "Icecafelatte.jpg",
         description: "커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",
         priceImg: "money_3000.jpg",
         orderText: "시원한 카페라떼 한잔 주세요"
