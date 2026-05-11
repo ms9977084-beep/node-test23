@@ -218,7 +218,7 @@ const menuData = [
     },
     {
         name: "요미요미",
-        img: "latte.jpg",
+        img: "yomi.jpg",
         description: "페퍼민트 티백을 우려낸 박하맛 차 입니다.",
         priceImg: "money_1500.jpg",
         orderText: "따뜻한 카페라떼 한잔 주세요"
