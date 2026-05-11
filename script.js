@@ -290,6 +290,13 @@ let currentDescText   = '';
 let previousPage      = null;
 let savedScrollY      = 0;
 
+// ── priceImg 파일명에서 가격 추출 ──
+// 예: "money_2000.jpg" → "2000"
+function extractPrice(priceImg) {
+    const match = priceImg.match(/money_(\d+)/);
+    return match ? Number(match[1]).toLocaleString('ko-KR') : '';
+}
+
 // ── TTS 헬퍼 ──
 function speak(text) {
     if (!('speechSynthesis' in window)) return;
@@ -402,16 +409,19 @@ function renderGoodsList() {
 
 // ── 상세 보기 (메뉴·굿즈 공통) ──
 function showDetail(item, btnMain, btnSub) {
+    const price = extractPrice(item.priceImg);
+    const fullText = item.description + ' 가격은 ' + price + '원입니다.';
+
     detailDesc.innerText     = item.description;
     detailMenuImg.src        = item.img;
     detailMenuImg.alt        = item.name;
     detailPriceImg.src       = item.priceImg;
     currentOrderText         = item.orderText;
-    currentDescText          = item.description;
+    currentDescText          = fullText;
     orderBtnLabel.innerHTML  = `${btnMain}<br><small>${btnSub}</small>`;
     speechBubble.classList.add('hidden');
     showPage(detailView);
-    speak(item.description);
+    speak(fullText);
 }
 
 // ── 주문/구매 버튼 TTS ──
