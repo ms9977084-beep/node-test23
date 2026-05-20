@@ -196,13 +196,6 @@ const menuData = [
         orderText: "시원한 레몬에이드 한잔 주세요"
     },
     {
-        name: "사과쥬스",
-        img: "apple.jpg",
-        description: "달콤한 사과 맛의 주스 입니다.",
-        priceImg: "money_4000.jpg",
-        orderText: "사과쥬스 주세요"
-    },
-    {
         name: "바닐라 시럽",
         img: "vsyrup.png",
         description: "커피에 넣으면 달콤한 바닐라 향이 납니다.",
@@ -215,13 +208,6 @@ const menuData = [
         description: "커피에 넣으면 달콤한 헤이즐넛 향이 납니다.",
         priceImg: "money_500.jpg",
         orderText: "헤이즐넛 시럽 주세요"
-    },
-    {
-        name: "요미요미",
-        img: "yomi.jpg",
-        description: "페퍼민트 티백을 우려낸 박하맛 차 입니다.",
-        priceImg: "money_1500.jpg",
-        orderText: "따뜻한 카페라떼 한잔 주세요"
     }
 ];
 
