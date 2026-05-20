@@ -8,17 +8,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
         :root {
-            --cream: #fdf6e3;
-            --coffee: #6f4e37;
-            --orange: #f4a261;
-            --teal: #74b9a4;
-            --blue: #5b9bd5;
-            --red: #ff6b6b;
-            --gray: #aaaaaa;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 14px rgba(0,0,0,0.10);
-
-            /* 카테고리 색상 */
+            --cream:   #fdf6e3;
+            --coffee:  #6f4e37;
+            --orange:  #f4a261;
+            --teal:    #74b9a4;
+            --blue:    #5b9bd5;
+            --red:     #ff6b6b;
+            --green:   #52c17a;
+            --gray:    #aaaaaa;
+            --shadow:  0 4px 14px rgba(0,0,0,0.10);
             --cat-all:     #6f4e37;
             --cat-coffee:  #c47c3b;
             --cat-noncoff: #74b9a4;
@@ -26,652 +24,808 @@
             --cat-ade:     #e07bb5;
             --cat-syrup:   #9b7fd4;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Nanum Gothic', sans-serif;
             text-align: center;
             background-color: var(--cream);
             min-height: 100vh;
         }
-
         .hidden { display: none !important; }
 
-        /* ─── 초기화면 ─── */
+        /* ── 초기화면 ── */
         #main-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 30px 20px;
-            gap: 16px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh; padding: 30px 20px; gap: 16px;
         }
-        #main-page h1 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--coffee);
-            letter-spacing: -0.5px;
-        }
-        #main-page .subtitle {
-            font-size: 1rem;
-            color: #999;
-            margin-top: -8px;
-        }
+        #main-page h1 { font-size: 2.4rem; font-weight: 800; color: var(--coffee); }
+        #main-page .subtitle { font-size: 1rem; color: #999; }
         #view-menu, #view-goods {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 88%;
-            max-width: 320px;
-            padding: 22px 20px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: transform .15s, box-shadow .15s;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; width: 88%; max-width: 320px;
+            padding: 22px 20px; font-size: 1.5rem; font-weight: 800;
+            border: none; border-radius: 20px; cursor: pointer;
+            box-shadow: var(--shadow); transition: transform .15s;
+            font-family: 'Nanum Gothic', sans-serif;
         }
-        #view-menu:active, #view-goods:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-        }
+        #view-menu:active, #view-goods:active { transform: scale(0.97); }
         #view-menu  { background: var(--orange); color: white; }
         #view-goods { background: var(--teal);   color: white; }
 
-        /* ─── 공통 페이지 헤더 ─── */
+        /* ── 공통 헤더 ── */
         .page-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--cream);
-            padding: 14px 16px 0;
+            position: sticky; top: 0; z-index: 100;
+            background: var(--cream); padding: 14px 16px 0;
             border-bottom: 2px solid #ede0cc;
         }
-        .page-header h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--coffee);
-            margin-bottom: 10px;
-        }
-        .header-btns {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 12px;
-        }
+        .page-header h2 { font-size: 1.5rem; font-weight: 800; color: var(--coffee); margin-bottom: 10px; }
+        .header-btns { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
 
-        /* ─── 카테고리 탭 바 ─── */
+        /* ── 카테고리 탭 ── */
         #category-bar {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding: 0 4px 12px;
-            scrollbar-width: none;
-            justify-content: flex-start;
+            display: flex; gap: 8px; overflow-x: auto;
+            padding: 0 4px 12px; scrollbar-width: none;
         }
         #category-bar::-webkit-scrollbar { display: none; }
-
         .cat-btn {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 10px 14px;
-            border: 3px solid transparent;
-            border-radius: 16px;
-            background: white;
-            font-family: 'Nanum Gothic', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
+            flex-shrink: 0; display: flex; flex-direction: column;
+            align-items: center; gap: 4px; padding: 10px 14px;
+            border: 3px solid transparent; border-radius: 16px;
+            background: white; font-family: 'Nanum Gothic', sans-serif;
+            font-size: 0.85rem; font-weight: 700; cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform .15s, box-shadow .15s, border-color .15s;
-            color: #555;
+            transition: transform .15s, border-color .15s, background .15s; color: #555;
         }
         .cat-btn .cat-emoji { font-size: 1.6rem; }
         .cat-btn:active { transform: scale(0.95); }
+        .cat-btn[data-cat="all"].active    { background: var(--cat-all);    color: white; }
+        .cat-btn[data-cat="coffee"].active { background: var(--cat-coffee); color: white; }
+        .cat-btn[data-cat="noncoff"].active{ background: var(--cat-noncoff);color: white; }
+        .cat-btn[data-cat="tea"].active    { background: var(--cat-tea);    color: white; }
+        .cat-btn[data-cat="ade"].active    { background: var(--cat-ade);    color: white; }
+        .cat-btn[data-cat="syrup"].active  { background: var(--cat-syrup);  color: white; }
 
-        .cat-btn[data-cat="all"]     { border-color: transparent; }
-        .cat-btn[data-cat="all"].active    { border-color: var(--cat-all);    background: var(--cat-all);    color: white; }
-        .cat-btn[data-cat="coffee"].active { border-color: var(--cat-coffee); background: var(--cat-coffee); color: white; }
-        .cat-btn[data-cat="noncoff"].active{ border-color: var(--cat-noncoff);background: var(--cat-noncoff);color: white; }
-        .cat-btn[data-cat="tea"].active    { border-color: var(--cat-tea);    background: var(--cat-tea);    color: white; }
-        .cat-btn[data-cat="ade"].active    { border-color: var(--cat-ade);    background: var(--cat-ade);    color: white; }
-        .cat-btn[data-cat="syrup"].active  { border-color: var(--cat-syrup);  background: var(--cat-syrup);  color: white; }
-
-        .cat-btn:not(.active)[data-cat="coffee"]:hover { border-color: var(--cat-coffee); }
-        .cat-btn:not(.active)[data-cat="noncoff"]:hover{ border-color: var(--cat-noncoff); }
-        .cat-btn:not(.active)[data-cat="tea"]:hover    { border-color: var(--cat-tea); }
-        .cat-btn:not(.active)[data-cat="ade"]:hover    { border-color: var(--cat-ade); }
-        .cat-btn:not(.active)[data-cat="syrup"]:hover  { border-color: var(--cat-syrup); }
-
-        /* ─── 카테고리 섹션 제목 ─── */
+        /* ── 섹션 제목 ── */
         .section-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--coffee);
-            padding: 16px 16px 4px;
-            text-align: left;
-        }
-        .section-title span {
-            font-size: 1.5rem;
+            font-size: 1.2rem; font-weight: 800; color: var(--coffee);
+            padding: 16px 16px 4px; text-align: left;
         }
 
-        /* ─── 메뉴 카드 그리드 ─── */
+        /* ── 카드 그리드 ── */
         .cards-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-            padding: 10px 16px 20px;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 14px; padding: 10px 16px 20px;
         }
         .menu-card {
-            background: white;
-            border: 2.5px solid #e8ddd0;
-            border-radius: 20px;
-            padding: 14px;
-            width: 160px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: transform .15s, box-shadow .15s, border-color .15s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            background: white; border: 2.5px solid #e8ddd0;
+            border-radius: 20px; padding: 14px; width: 160px;
+            cursor: pointer; box-shadow: var(--shadow);
+            transition: transform .15s, box-shadow .15s;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
         }
         .menu-card:hover  { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.13); }
         .menu-card:active { transform: scale(0.96); }
-        .menu-card img {
-            width: 110px;
-            height: 110px;
-            border-radius: 12px;
-            object-fit: cover;
-        }
-        .menu-card h3 {
-            font-size: 0.92rem;
-            font-weight: 800;
-            color: #333;
-            word-break: keep-all;
-            line-height: 1.3;
-        }
-
-        /* 카테고리별 카드 테두리 색상 */
+        .menu-card img { width: 110px; height: 110px; border-radius: 12px; object-fit: cover; }
+        .menu-card h3 { font-size: 0.92rem; font-weight: 800; color: #333; word-break: keep-all; line-height: 1.3; }
         .menu-card[data-cat="coffee"]  { border-color: #e8c9a0; }
         .menu-card[data-cat="noncoff"] { border-color: #b2dcd3; }
         .menu-card[data-cat="tea"]     { border-color: #c3dea8; }
         .menu-card[data-cat="ade"]     { border-color: #f0bede; }
         .menu-card[data-cat="syrup"]   { border-color: #cfc3f0; }
 
-        /* ─── 뒤로 가기 ─── */
+        /* ── 공통 버튼 ── */
         .back-btn {
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            font-family: 'Nanum Gothic', sans-serif;
-            font-weight: 700;
-            background: var(--gray);
-            color: white;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
+            padding: 14px 28px; font-size: 1.1rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 700; background: var(--gray); color: white;
+            border: none; border-radius: 14px; cursor: pointer;
         }
         .replay-btn {
-            padding: 12px 20px;
-            font-size: 1.1rem;
-            font-family: 'Nanum Gothic', sans-serif;
-            font-weight: 700;
-            background: var(--blue);
-            color: white;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
+            padding: 12px 20px; font-size: 1.1rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 700; background: var(--blue); color: white;
+            border: none; border-radius: 14px; cursor: pointer;
         }
+        .page-footer { padding: 20px; }
+        .no-results { text-align: center; padding: 40px 20px; color: #aaa; font-size: 1.1rem; }
 
-        /* ─── 굿즈 화면 ─── */
-        #goods { padding-bottom: 30px; }
-
-        /* ─── 상세 화면 ─── */
+        /* ── 상세 화면 ── */
         #detail-view {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--cream);
-            overflow-y: auto;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--cream); overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 1000;
-            padding: 24px 20px 40px;
+            display: flex; flex-direction: column; align-items: center;
+            z-index: 1000; padding: 24px 20px 40px;
         }
         #close-detail {
-            align-self: flex-start;
-            padding: 12px 22px;
-            font-size: 1.1rem;
-            font-family: 'Nanum Gothic', sans-serif;
-            font-weight: 700;
-            background: var(--red);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-bottom: 16px;
+            align-self: flex-start; padding: 12px 22px; font-size: 1.1rem;
+            font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
+            background: var(--red); color: white; border: none; border-radius: 12px;
+            cursor: pointer; margin-bottom: 16px;
         }
         #detail-desc {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 12px;
-            word-break: keep-all;
-            line-height: 1.5;
-            max-width: 380px;
+            font-size: 1.4rem; font-weight: 700; color: #333;
+            margin-bottom: 12px; word-break: keep-all; line-height: 1.5; max-width: 380px;
         }
-        #detail-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
+        #detail-images { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px; }
         #detail-menu-img, #detail-price-img {
-            width: 260px;
-            height: 260px;
-            object-fit: contain;
-            border-radius: 16px;
-            background: white;
-            box-shadow: var(--shadow);
+            width: 260px; height: 260px; object-fit: contain;
+            border-radius: 16px; background: white; box-shadow: var(--shadow);
         }
         #speech-bubble {
-            background: #e8f4f0;
-            border: 2.5px solid var(--teal);
-            border-radius: 16px;
-            padding: 12px 20px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 10px auto;
-            max-width: 340px;
+            background: #e8f4f0; border: 2.5px solid var(--teal);
+            border-radius: 16px; padding: 12px 20px; font-size: 1.2rem;
+            font-weight: 700; margin: 10px auto; max-width: 340px;
         }
         #order-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 20px 30px;
-            font-size: 1.4rem;
-            font-family: 'Nanum Gothic', sans-serif;
-            font-weight: 800;
-            background: var(--orange);
-            color: white;
-            border: none;
-            border-radius: 18px;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            min-width: 180px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            padding: 20px 30px; font-size: 1.4rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 800; background: var(--orange); color: white;
+            border: none; border-radius: 18px; cursor: pointer;
+            box-shadow: var(--shadow); min-width: 180px;
         }
-        .order-icon {
-            width: 130px;
-            height: 130px;
-            object-fit: contain;
-            border-radius: 12px;
+        .order-icon { width: 130px; height: 130px; object-fit: contain; border-radius: 12px; background: white; }
+        .detail-btn-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 18px; }
+
+        /* ════════════════════════════════
+           ── 주문 옵션 모달 ──
+        ════════════════════════════════ */
+        #order-modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            display: flex; align-items: flex-end; justify-content: center;
+            animation: fadeIn .2s ease;
+        }
+        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+        #order-modal {
             background: white;
+            border-radius: 28px 28px 0 0;
+            padding: 28px 20px 36px;
+            width: 100%; max-width: 480px;
+            max-height: 88vh;
+            overflow-y: auto;
+            animation: slideUp .25s ease;
         }
-        .detail-btn-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
+        @keyframes slideUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        /* 모달 헤더 */
+        .modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .modal-item-name {
+            font-size: 1.4rem; font-weight: 800; color: var(--coffee);
+        }
+        .modal-close-x {
+            background: #f0f0f0; border: none; border-radius: 50%;
+            width: 38px; height: 38px; font-size: 1.2rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* 진행 단계 표시바 */
+        .modal-progress {
+            display: flex; gap: 6px; margin: 12px 0 20px;
             justify-content: center;
-            margin-top: 18px;
+        }
+        .modal-step-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #ddd; transition: background .25s;
+        }
+        .modal-step-dot.done    { background: var(--teal); }
+        .modal-step-dot.current { background: var(--orange); transform: scale(1.3); }
+
+        /* 질문 영역 */
+        .modal-question {
+            font-size: 1.35rem; font-weight: 800; color: #333;
+            margin-bottom: 18px; word-break: keep-all; line-height: 1.4;
         }
 
-        /* ─── 결과 없음 ─── */
-        .no-results {
-            text-align: center;
-            padding: 40px 20px;
-            color: #aaa;
-            font-size: 1.1rem;
+        /* 옵션 버튼들 */
+        .modal-options {
+            display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+            margin-bottom: 10px;
+        }
+        .opt-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding: 16px 18px; min-width: 120px;
+            border: 3px solid #e0e0e0; border-radius: 18px;
+            background: white; cursor: pointer;
+            font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
+            font-size: 1.05rem; color: #333;
+            transition: border-color .15s, background .15s, transform .12s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .opt-btn .opt-emoji { font-size: 2rem; }
+        .opt-btn:active { transform: scale(0.95); }
+        .opt-btn.selected {
+            border-color: var(--orange);
+            background: #fff5ec;
+            color: var(--coffee);
         }
 
-        /* ─── 메뉴 페이지 하단 ─── */
-        #menu { padding-bottom: 30px; }
-        .page-footer {
-            padding: 20px;
+        /* 완료 화면 */
+        .modal-done {
+            text-align: center; padding: 10px 0 6px;
+        }
+        .modal-done .done-emoji { font-size: 3.5rem; margin-bottom: 10px; }
+        .modal-done .done-title { font-size: 1.5rem; font-weight: 800; color: var(--coffee); margin-bottom: 8px; }
+        .modal-done .done-summary {
+            background: var(--cream); border-radius: 14px; padding: 14px 16px;
+            font-size: 1rem; font-weight: 700; color: #555;
+            text-align: left; line-height: 1.9; margin-bottom: 18px;
+        }
+        .modal-done .done-speech {
+            background: #e8f4f0; border: 2.5px solid var(--teal);
+            border-radius: 14px; padding: 12px 16px;
+            font-size: 1.1rem; font-weight: 800; color: var(--coffee);
+            margin-bottom: 18px; word-break: keep-all;
+        }
+        .modal-done-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+        /* 완료 버튼 */
+        .btn-speak-order {
+            padding: 16px 28px; font-size: 1.2rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 800; background: var(--orange); color: white;
+            border: none; border-radius: 16px; cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        .btn-cancel-modal {
+            padding: 16px 20px; font-size: 1.1rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 700; background: #f0f0f0; color: #666;
+            border: none; border-radius: 16px; cursor: pointer;
+        }
+        .btn-replay-done {
+            padding: 16px 20px; font-size: 1.1rem; font-family: 'Nanum Gothic', sans-serif;
+            font-weight: 700; background: var(--blue); color: white;
+            border: none; border-radius: 16px; cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- 초기 화면 -->
-    <main id="main-page">
-        <h1>☕ 환영합니다!</h1>
-        <p class="subtitle">🔊 소리는 크롬(Chrome) 브라우저에서 잘 들려요!</p>
-        <button id="view-menu">☕ 메뉴판 보기</button>
-        <button id="view-goods">🎁 굿즈(기념 물건) 보기</button>
-    </main>
+<!-- 초기 화면 -->
+<main id="main-page">
+    <h1>☕ 환영합니다!</h1>
+    <p class="subtitle">🔊 소리는 크롬(Chrome) 브라우저에서 잘 들려요!</p>
+    <button id="view-menu">☕ 메뉴판 보기</button>
+    <button id="view-goods">🎁 굿즈(기념 물건) 보기</button>
+</main>
 
-    <!-- 메뉴판 화면 -->
-    <div id="menu" class="hidden">
-        <div class="page-header">
-            <h2>메뉴를 선택하세요</h2>
-            <div class="header-btns">
-                <button class="back-btn"   id="menu-back">◀ 뒤로</button>
-                <button class="replay-btn" id="menu-replay">🔊 다시 듣기</button>
-            </div>
-
-            <!-- 카테고리 탭 -->
-            <div id="category-bar">
-                <button class="cat-btn active" data-cat="all">
-                    <span class="cat-emoji">🍽️</span>전체
-                </button>
-                <button class="cat-btn" data-cat="coffee">
-                    <span class="cat-emoji">☕</span>커피
-                </button>
-                <button class="cat-btn" data-cat="noncoff">
-                    <span class="cat-emoji">🥛</span>논커피
-                </button>
-                <button class="cat-btn" data-cat="tea">
-                    <span class="cat-emoji">🍵</span>티·차
-                </button>
-                <button class="cat-btn" data-cat="ade">
-                    <span class="cat-emoji">🍹</span>에이드
-                </button>
-                <button class="cat-btn" data-cat="syrup">
-                    <span class="cat-emoji">🍯</span>시럽
-                </button>
-            </div>
+<!-- 메뉴판 화면 -->
+<div id="menu" class="hidden">
+    <div class="page-header">
+        <h2>메뉴를 선택하세요</h2>
+        <div class="header-btns">
+            <button class="back-btn"   id="menu-back">◀ 뒤로</button>
+            <button class="replay-btn" id="menu-replay">🔊 다시 듣기</button>
         </div>
-
-        <div id="menu-sections"></div>
-
-        <div class="page-footer">
-            <button class="back-btn" id="menu-back2">◀ 처음으로 돌아가기</button>
+        <div id="category-bar">
+            <button class="cat-btn active" data-cat="all"><span class="cat-emoji">🍽️</span>전체</button>
+            <button class="cat-btn" data-cat="coffee"><span class="cat-emoji">☕</span>커피</button>
+            <button class="cat-btn" data-cat="noncoff"><span class="cat-emoji">🥛</span>논커피</button>
+            <button class="cat-btn" data-cat="tea"><span class="cat-emoji">🍵</span>티·차</button>
+            <button class="cat-btn" data-cat="ade"><span class="cat-emoji">🍹</span>에이드</button>
+            <button class="cat-btn" data-cat="syrup"><span class="cat-emoji">🍯</span>시럽</button>
         </div>
     </div>
+    <div id="menu-sections"></div>
+    <div class="page-footer">
+        <button class="back-btn" id="menu-back2">◀ 처음으로 돌아가기</button>
+    </div>
+</div>
 
-    <!-- 굿즈 화면 -->
-    <div id="goods" class="hidden">
-        <div class="page-header">
-            <h2>물건을 선택하세요</h2>
-            <div class="header-btns">
-                <button class="back-btn"   id="goods-back">◀ 뒤로</button>
-                <button class="replay-btn" id="goods-replay">🔊 다시 듣기</button>
-            </div>
-        </div>
-        <div id="goods-list" class="cards-grid"></div>
-        <div class="page-footer">
-            <button class="back-btn" id="goods-back2">◀ 처음으로 돌아가기</button>
+<!-- 굿즈 화면 -->
+<div id="goods" class="hidden">
+    <div class="page-header">
+        <h2>물건을 선택하세요</h2>
+        <div class="header-btns">
+            <button class="back-btn"   id="goods-back">◀ 뒤로</button>
+            <button class="replay-btn" id="goods-replay">🔊 다시 듣기</button>
         </div>
     </div>
-
-    <!-- 상세 화면 (공통) -->
-    <div id="detail-view" class="hidden">
-        <button id="close-detail">◀ 뒤로 가기</button>
-        <p id="detail-desc"></p>
-        <button class="replay-btn" id="detail-replay">🔊 다시 듣기</button>
-        <div id="detail-images">
-            <img id="detail-menu-img"  src="" alt="메뉴 이미지">
-            <img id="detail-price-img" src="" alt="가격 이미지">
-        </div>
-        <div id="speech-bubble" class="hidden">🔊 소리가 나오고 있어요!</div>
-        <div class="detail-btn-row">
-            <button id="order-btn">
-                <img src="want_icon.jpg" alt="먹고싶어요 아이콘" class="order-icon">
-                <span id="order-btn-label">주문할래요<br><small>(먹고싶어요)</small></span>
-            </button>
-        </div>
+    <div id="goods-list" class="cards-grid"></div>
+    <div class="page-footer">
+        <button class="back-btn" id="goods-back2">◀ 처음으로 돌아가기</button>
     </div>
+</div>
 
-    <script>
-    // ── 데이터 (카테고리 추가) ──
-    const menuData = [
-        // ☕ 커피
-        { name:"따뜻한 아메리카노",   img:"americano.jpg",     category:"coffee",  description:"커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.", priceImg:"money_2000.jpg", orderText:"따뜻한 아메리카노 한잔 주세요" },
-        { name:"시원한 아메리카노",   img:"iceamericano.jpg",  category:"coffee",  description:"커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.", priceImg:"money_2000.jpg", orderText:"시원한 아메리카노 한잔 주세요" },
-        { name:"따뜻한 카페라떼",    img:"latte.jpg",          category:"coffee",  description:"커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.", priceImg:"money_3000.jpg", orderText:"따뜻한 카페라떼 한잔 주세요" },
-        { name:"시원한 카페라떼",    img:"Icecafelatte.jpg",   category:"coffee",  description:"커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.", priceImg:"money_3000.jpg", orderText:"시원한 카페라떼 한잔 주세요" },
-        { name:"따뜻한 바닐라라떼",  img:"vanila.jpg",         category:"coffee",  description:"바닐라시럽과 우유가 들어간 따뜻한 바닐라 라떼입니다. 달고 커피가 들어갑니다.", priceImg:"money_3500.jpg", orderText:"따뜻한 바닐라라떼 한잔 주세요" },
-        { name:"시원한 바닐라라떼",  img:"icevanila.jpg",      category:"coffee",  description:"바닐라시럽과 우유가 들어간 시원한 바닐라 라떼입니다. 달고 커피가 들어갑니다.", priceImg:"money_3500.jpg", orderText:"시원한 바닐라라떼 한잔 주세요" },
-        { name:"따뜻한 헤이즐넛라떼",img:"hazelnut.jpg",       category:"coffee",  description:"헤이즐넛시럽과 우유가 들어간 따뜻한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.", priceImg:"money_3500.jpg", orderText:"따뜻한 헤이즐넛라떼 한잔 주세요" },
-        { name:"시원한 헤이즐넛라떼",img:"icehazelnut.jpg",    category:"coffee",  description:"헤이즐넛시럽과 우유가 들어간 시원한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.", priceImg:"money_3500.jpg", orderText:"시원한 헤이즐넛라떼 한잔 주세요" },
-        // 🥛 논커피
-        { name:"따뜻한 초코라떼",    img:"choco.jpg",          category:"noncoff", description:"초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.", priceImg:"money_3500.jpg", orderText:"따뜻한 초코라떼 한잔 주세요" },
-        { name:"시원한 초코라떼",    img:"Icechoco.jpg",        category:"noncoff", description:"초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 우유 음료입니다.", priceImg:"money_3500.jpg", orderText:"시원한 초코라떼 한잔 주세요" },
-        { name:"따뜻한 녹차라떼",    img:"greentealatte.jpg",   category:"noncoff", description:"녹차분말과 우유가 들어간 따뜻한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다.", priceImg:"money_4000.jpg", orderText:"따뜻한 녹차라떼 한잔 주세요" },
-        { name:"시원한 녹차라떼",    img:"Icegreentealatte.jpg",category:"noncoff", description:"녹차분말과 우유가 들어간 시원한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다.", priceImg:"money_4000.jpg", orderText:"시원한 녹차라떼 한잔 주세요" },
-        { name:"따뜻한 고구마라떼",  img:"goguma.png",          category:"noncoff", description:"고구마분말과 우유가 들어간 따뜻한 고구마맛 라떼입니다. 달고 커피는 들어가지 않습니다.", priceImg:"money_4000.jpg", orderText:"따뜻한 고구마라떼 한잔 주세요" },
-        { name:"시원한 고구마라떼",  img:"icegoguma.png",       category:"noncoff", description:"고구마분말과 우유가 들어간 시원한 고구마맛 라떼입니다. 달고 커피는 들어가지 않습니다.", priceImg:"money_4000.jpg", orderText:"시원한 고구마라떼 한잔 주세요" },
-        { name:"시원한 딸기라떼",    img:"berry.jpg",           category:"noncoff", description:"딸기청과 우유가 들어간 시원한 딸기맛 라떼입니다. 달고 커피는 들어가지 않습니다.", priceImg:"money_4500.jpg", orderText:"시원한 딸기라떼 한잔 주세요" },
-        // 🍵 티
-        { name:"따뜻한 페퍼민트 티", img:"mint.png",           category:"tea",     description:"페퍼민트 티백을 우려낸 박하맛 차 입니다.", priceImg:"money_3000.jpg", orderText:"따뜻한 페퍼민트 티 한잔 주세요" },
-        { name:"시원한 페퍼민트 티", img:"icemint.png",        category:"tea",     description:"페퍼민트 티백을 우려낸 박하맛 차 입니다.", priceImg:"money_3000.jpg", orderText:"시원한 페퍼민트 티 한잔 주세요" },
-        { name:"따뜻한 캐모마일 티", img:"chamo.png",          category:"tea",     description:"캐모마일 티백을 우려낸 사과향 차 입니다.", priceImg:"money_3000.jpg", orderText:"따뜻한 캐모마일 티 한잔 주세요" },
-        { name:"시원한 캐모마일 티", img:"icechamo.png",       category:"tea",     description:"캐모마일 티백을 우려낸 사과향 차 입니다.", priceImg:"money_3000.jpg", orderText:"시원한 캐모마일 티 한잔 주세요" },
-        { name:"따뜻한 루이보스 티", img:"rooibos.png",        category:"tea",     description:"루이보스 티백을 우려낸 구수한 맛의 차 입니다.", priceImg:"money_3000.jpg", orderText:"따뜻한 루이보스 티 한잔 주세요" },
-        { name:"시원한 루이보스 티", img:"icerooibos.png",     category:"tea",     description:"루이보스 티백을 우려낸 구수한 맛의 차 입니다.", priceImg:"money_3000.jpg", orderText:"시원한 루이보스 티 한잔 주세요" },
-        { name:"따뜻한 유자차",      img:"youja.png",          category:"tea",     description:"유자청이 들어간 달달한 유자맛 차 입니다.", priceImg:"money_4000.jpg", orderText:"따뜻한 유자차 한잔 주세요" },
-        { name:"시원한 유자차",      img:"iceyouja.jpg",       category:"tea",     description:"유자청이 들어간 달달한 유자맛 차 입니다.", priceImg:"money_4000.jpg", orderText:"시원한 유자차 한잔 주세요" },
-        // 🍹 에이드
-        { name:"시원한 복숭아 아이스티",img:"icetea.png",      category:"ade",     description:"복숭아 맛이 나는 달달하고 시원한 차 입니다.", priceImg:"money_3000.jpg", orderText:"시원한 복숭아 아이스티 한잔 주세요" },
-        { name:"따뜻한 자몽에이드",  img:"gfade.jpg",          category:"ade",     description:"자몽청이 들어가서 약간 쓰고 달달한 에이드 입니다.", priceImg:"money_3000.jpg", orderText:"따뜻한 자몽에이드 한잔 주세요" },
-        { name:"시원한 자몽에이드",  img:"icegfade.jpg",       category:"ade",     description:"자몽청이 들어가서 약간 쓰고 달달한 에이드 입니다.", priceImg:"money_4000.jpg", orderText:"시원한 자몽에이드 한잔 주세요" },
-        { name:"따뜻한 레몬에이드",  img:"lemon.jpg",          category:"ade",     description:"레몬청이 들어가서 새콤하고 달달한 에이드 입니다.", priceImg:"money_4000.jpg", orderText:"따뜻한 레몬에이드 한잔 주세요" },
-        { name:"시원한 레몬에이드",  img:"icelemon.jpg",       category:"ade",     description:"레몬청이 들어가서 새콤하고 달달한 에이드 입니다.", priceImg:"money_4000.jpg", orderText:"시원한 레몬에이드 한잔 주세요" },
-        // 🍯 시럽
-        { name:"바닐라 시럽",        img:"vsyrup.png",         category:"syrup",   description:"커피에 넣으면 달콤한 바닐라 향이 납니다.", priceImg:"money_500.jpg", orderText:"바닐라 시럽 주세요" },
-        { name:"헤이즐넛 시럽",      img:"hsyrup.png",         category:"syrup",   description:"커피에 넣으면 달콤한 헤이즐넛 향이 납니다.", priceImg:"money_500.jpg", orderText:"헤이즐넛 시럽 주세요" },
-    ];
+<!-- 상세 화면 (굿즈 전용) -->
+<div id="detail-view" class="hidden">
+    <button id="close-detail">◀ 뒤로 가기</button>
+    <p id="detail-desc"></p>
+    <button class="replay-btn" id="detail-replay">🔊 다시 듣기</button>
+    <div id="detail-images">
+        <img id="detail-menu-img"  src="" alt="메뉴 이미지">
+        <img id="detail-price-img" src="" alt="가격 이미지">
+    </div>
+    <div id="speech-bubble" class="hidden">🔊 소리가 나오고 있어요!</div>
+    <div class="detail-btn-row">
+        <button id="order-btn">
+            <img src="want_icon.jpg" alt="먹고싶어요 아이콘" class="order-icon">
+            <span id="order-btn-label">구매할래요<br><small>(갖고싶어요)</small></span>
+        </button>
+    </div>
+</div>
 
-    const goodsData = [
-        { name:"커피 드립백 10개", img:"drip10.jpg", description:"집에서도 카페 커피를 즐길 수 있는 드립백 10개 세트입니다.", priceImg:"money_11000.jpg", orderText:"커피 드립백 10개 주세요" },
-        { name:"커피 드립백 5개",  img:"drip5.jpg",  description:"집에서도 카페 커피를 즐길 수 있는 드립백 5개 세트입니다.", priceImg:"money_4500.jpg",  orderText:"커피 드립백 5개 주세요" },
-        { name:"에코백",           img:"eco.jpg",    description:"카페 로고가 그려진 예쁜 에코백입니다.", priceImg:"money_9000.jpg",  orderText:"에코백 주세요" },
-        { name:"핸드폰 그립톡",    img:"grip.jpg",   description:"카페 로고가 그려진 핸드폰 그립톡입니다.", priceImg:"money_7000.jpg",  orderText:"핸드폰 그립톡 주세요" },
-        { name:"작은 키링",        img:"smallkey.jpg",description:"카페 로고가 새겨진 작은 키링입니다.", priceImg:"money_4000.jpg",  orderText:"작은 키링 하나 주세요" },
-        { name:"큰 키링",          img:"bigkey.jpg", description:"카페 로고가 새겨진 큰 키링입니다.", priceImg:"money_6000.jpg",  orderText:"큰 키링 하나 주세요" },
-    ];
+<!-- 주문 옵션 모달 (JS로 동적 생성) -->
+<div id="order-modal-overlay" class="hidden">
+    <div id="order-modal"></div>
+</div>
 
-    const categories = [
-        { key:"coffee",  emoji:"☕", label:"커피 (Coffee)" },
-        { key:"noncoff", emoji:"🥛", label:"논커피 라떼 (Non-Coffee)" },
-        { key:"tea",     emoji:"🍵", label:"티·차 (Tea)" },
-        { key:"ade",     emoji:"🍹", label:"에이드 & 아이스티 (Ade)" },
-        { key:"syrup",   emoji:"🍯", label:"시럽 (Syrup)" },
-    ];
+<script>
+/* ════════════════════════════════════════════════════════
+   ① 데이터 영역 — 여기만 수정하면 됨!
+   ════════════════════════════════════════════════════════
 
-    // ── 요소 선택 ──
-    const mainPage      = document.getElementById('main-page');
-    const menuDiv       = document.getElementById('menu');
-    const menuSections  = document.getElementById('menu-sections');
-    const detailView    = document.getElementById('detail-view');
-    const detailDesc    = document.getElementById('detail-desc');
-    const detailMenuImg = document.getElementById('detail-menu-img');
-    const detailPriceImg= document.getElementById('detail-price-img');
-    const closeDetailBtn= document.getElementById('close-detail');
-    const orderBtn      = document.getElementById('order-btn');
-    const orderBtnLabel = document.getElementById('order-btn-label');
-    const speechBubble  = document.getElementById('speech-bubble');
-    const goodsDiv      = document.getElementById('goods');
-    const goodsList     = document.getElementById('goods-list');
+   필드 설명:
+     id        : 고유 번호 (새 항목 추가 시 순서대로 증가)
+     name      : 메뉴 이름 (카드와 모달에 표시)
+     category  : 'coffee' | 'noncoff' | 'tea' | 'ade' | 'syrup'
+     price     : 숫자 (원)
+     img       : 이미지 파일명
+     priceImg  : 가격판 이미지 파일명
+     description: 설명 문장 (TTS 읽어줌)
+     isIced    : true = 시원한 음료 → 얼음양 옵션 나옴 / false = 건너뜀
+     hasCoffee : true = 커피 포함 → 농도 옵션 나옴 / false = 건너뜀
 
-    let currentOrderText = '';
-    let currentDescText  = '';
-    let previousPage     = null;
-    let savedScrollY     = 0;
-    let activeCat        = 'all';
+   ─── 새 메뉴 추가 예시 ───────────────────────────────
+   { id:31, name:"따뜻한 라벤더라떼", category:"noncoff", price:4500,
+     img:"lavender.jpg", priceImg:"money_4500.jpg",
+     description:"라벤더시럽과 우유가 들어간 따뜻한 라떼입니다.",
+     isIced:false, hasCoffee:false },
+   ────────────────────────────────────────────────────── */
 
-    // ── 가격 추출 ──
-    function extractPrice(priceImg) {
-        const match = priceImg.match(/money_(\d+)/);
-        return match ? Number(match[1]).toLocaleString('ko-KR') : '';
-    }
+const menuData = [
+    // ☕ 커피
+    { id:1,  name:"따뜻한 아메리카노",   category:"coffee",  price:2000, img:"americano.jpg",      priceImg:"money_2000.jpg", description:"커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",               isIced:false, hasCoffee:true  },
+    { id:2,  name:"시원한 아메리카노",   category:"coffee",  price:2000, img:"iceamericano.jpg",   priceImg:"money_2000.jpg", description:"커피 원두 추출액과 물을 섞은 기본적인 커피입니다. 달지 않고 쓴맛이 납니다.",               isIced:true,  hasCoffee:true  },
+    { id:3,  name:"따뜻한 카페라떼",    category:"coffee",  price:3000, img:"latte.jpg",           priceImg:"money_3000.jpg", description:"커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",                               isIced:false, hasCoffee:true  },
+    { id:4,  name:"시원한 카페라떼",    category:"coffee",  price:3000, img:"Icecafelatte.jpg",    priceImg:"money_3000.jpg", description:"커피 원두 추출액과 우유를 섞은 부드러운 맛의 커피입니다.",                               isIced:true,  hasCoffee:true  },
+    { id:5,  name:"따뜻한 바닐라라떼",  category:"coffee",  price:3500, img:"vanila.jpg",          priceImg:"money_3500.jpg", description:"바닐라시럽과 우유가 들어간 따뜻한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",             isIced:false, hasCoffee:true  },
+    { id:6,  name:"시원한 바닐라라떼",  category:"coffee",  price:3500, img:"icevanila.jpg",       priceImg:"money_3500.jpg", description:"바닐라시럽과 우유가 들어간 시원한 바닐라 라떼입니다. 달고 커피가 들어갑니다.",             isIced:true,  hasCoffee:true  },
+    { id:7,  name:"따뜻한 헤이즐넛라떼",category:"coffee",  price:3500, img:"hazelnut.jpg",        priceImg:"money_3500.jpg", description:"헤이즐넛시럽과 우유가 들어간 따뜻한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",         isIced:false, hasCoffee:true  },
+    { id:8,  name:"시원한 헤이즐넛라떼",category:"coffee",  price:3500, img:"icehazelnut.jpg",     priceImg:"money_3500.jpg", description:"헤이즐넛시럽과 우유가 들어간 시원한 헤이즐넛 라떼입니다. 달고 커피가 들어갑니다.",         isIced:true,  hasCoffee:true  },
+    // 🥛 논커피
+    { id:9,  name:"따뜻한 초코라떼",    category:"noncoff", price:3500, img:"choco.jpg",           priceImg:"money_3500.jpg", description:"초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 음료입니다.",                              isIced:false, hasCoffee:false },
+    { id:10, name:"시원한 초코라떼",    category:"noncoff", price:3500, img:"Icechoco.jpg",        priceImg:"money_3500.jpg", description:"초코분말과 우유를 섞어서 달콤하고 초코맛이 나는 음료입니다.",                              isIced:true,  hasCoffee:false },
+    { id:11, name:"따뜻한 녹차라떼",    category:"noncoff", price:4000, img:"greentealatte.jpg",   priceImg:"money_4000.jpg", description:"녹차분말과 우유가 들어간 따뜻한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다.",        isIced:false, hasCoffee:false },
+    { id:12, name:"시원한 녹차라떼",    category:"noncoff", price:4000, img:"Icegreentealatte.jpg",priceImg:"money_4000.jpg", description:"녹차분말과 우유가 들어간 시원한 녹차맛 라떼입니다. 달고 커피는 들어가지 않습니다.",        isIced:true,  hasCoffee:false },
+    { id:13, name:"따뜻한 고구마라떼",  category:"noncoff", price:4000, img:"goguma.png",          priceImg:"money_4000.jpg", description:"고구마분말과 우유가 들어간 따뜻한 고구마맛 라떼입니다. 달고 커피는 들어가지 않습니다.",    isIced:false, hasCoffee:false },
+    { id:14, name:"시원한 고구마라떼",  category:"noncoff", price:4000, img:"icegoguma.png",       priceImg:"money_4000.jpg", description:"고구마분말과 우유가 들어간 시원한 고구마맛 라떼입니다. 달고 커피는 들어가지 않습니다.",    isIced:true,  hasCoffee:false },
+    { id:15, name:"시원한 딸기라떼",    category:"noncoff", price:4500, img:"berry.jpg",           priceImg:"money_4500.jpg", description:"딸기청과 우유가 들어간 시원한 딸기맛 라떼입니다. 달고 커피는 들어가지 않습니다.",          isIced:true,  hasCoffee:false },
+    // 🍵 티
+    { id:16, name:"따뜻한 페퍼민트 티", category:"tea",     price:3000, img:"mint.png",            priceImg:"money_3000.jpg", description:"페퍼민트 티백을 우려낸 박하맛 차입니다.",                                                isIced:false, hasCoffee:false },
+    { id:17, name:"시원한 페퍼민트 티", category:"tea",     price:3000, img:"icemint.png",         priceImg:"money_3000.jpg", description:"페퍼민트 티백을 우려낸 박하맛 차입니다.",                                                isIced:true,  hasCoffee:false },
+    { id:18, name:"따뜻한 캐모마일 티", category:"tea",     price:3000, img:"chamo.png",           priceImg:"money_3000.jpg", description:"캐모마일 티백을 우려낸 사과향 차입니다.",                                                isIced:false, hasCoffee:false },
+    { id:19, name:"시원한 캐모마일 티", category:"tea",     price:3000, img:"icechamo.png",        priceImg:"money_3000.jpg", description:"캐모마일 티백을 우려낸 사과향 차입니다.",                                                isIced:true,  hasCoffee:false },
+    { id:20, name:"따뜻한 루이보스 티", category:"tea",     price:3000, img:"rooibos.png",         priceImg:"money_3000.jpg", description:"루이보스 티백을 우려낸 구수한 맛의 차입니다.",                                           isIced:false, hasCoffee:false },
+    { id:21, name:"시원한 루이보스 티", category:"tea",     price:3000, img:"icerooibos.png",      priceImg:"money_3000.jpg", description:"루이보스 티백을 우려낸 구수한 맛의 차입니다.",                                           isIced:true,  hasCoffee:false },
+    { id:22, name:"따뜻한 유자차",      category:"tea",     price:4000, img:"youja.png",           priceImg:"money_4000.jpg", description:"유자청이 들어간 달달한 유자맛 차입니다.",                                                isIced:false, hasCoffee:false },
+    { id:23, name:"시원한 유자차",      category:"tea",     price:4000, img:"iceyouja.jpg",        priceImg:"money_4000.jpg", description:"유자청이 들어간 달달한 유자맛 차입니다.",                                                isIced:true,  hasCoffee:false },
+    // 🍹 에이드
+    { id:24, name:"시원한 복숭아 아이스티",category:"ade",  price:3000, img:"icetea.png",          priceImg:"money_3000.jpg", description:"복숭아맛이 나는 달달하고 시원한 차입니다.",                                              isIced:true,  hasCoffee:false },
+    { id:25, name:"따뜻한 자몽에이드",  category:"ade",     price:3000, img:"gfade.jpg",           priceImg:"money_3000.jpg", description:"자몽청이 들어가서 약간 쓰고 달달한 에이드입니다.",                                       isIced:false, hasCoffee:false },
+    { id:26, name:"시원한 자몽에이드",  category:"ade",     price:4000, img:"icegfade.jpg",        priceImg:"money_4000.jpg", description:"자몽청이 들어가서 약간 쓰고 달달한 에이드입니다.",                                       isIced:true,  hasCoffee:false },
+    { id:27, name:"따뜻한 레몬에이드",  category:"ade",     price:4000, img:"lemon.jpg",           priceImg:"money_4000.jpg", description:"레몬청이 들어가서 새콤하고 달달한 에이드입니다.",                                        isIced:false, hasCoffee:false },
+    { id:28, name:"시원한 레몬에이드",  category:"ade",     price:4000, img:"icelemon.jpg",        priceImg:"money_4000.jpg", description:"레몬청이 들어가서 새콤하고 달달한 에이드입니다.",                                        isIced:true,  hasCoffee:false },
+    // 🍯 시럽
+    { id:29, name:"바닐라 시럽",        category:"syrup",   price:500,  img:"vsyrup.png",          priceImg:"money_500.jpg",  description:"커피에 넣으면 달콤한 바닐라 향이 납니다.",                                               isIced:false, hasCoffee:false },
+    { id:30, name:"헤이즐넛 시럽",      category:"syrup",   price:500,  img:"hsyrup.png",          priceImg:"money_500.jpg",  description:"커피에 넣으면 달콤한 헤이즐넛 향이 납니다.",                                             isIced:false, hasCoffee:false },
+    // ↑ 새 메뉴는 여기 아래에 추가하세요!
+];
 
-    // ── TTS ──
-    function speak(text) {
-        if (!('speechSynthesis' in window)) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'ko-KR'; u.rate = 0.9;
-        window.speechSynthesis.speak(u);
-    }
+const goodsData = [
+    { name:"커피 드립백 10개", img:"drip10.jpg",   description:"집에서도 카페 커피를 즐길 수 있는 드립백 10개 세트입니다.", priceImg:"money_11000.jpg", orderText:"커피 드립백 10개 주세요" },
+    { name:"커피 드립백 5개",  img:"drip5.jpg",    description:"집에서도 카페 커피를 즐길 수 있는 드립백 5개 세트입니다.", priceImg:"money_4500.jpg",  orderText:"커피 드립백 5개 주세요" },
+    { name:"에코백",           img:"eco.jpg",      description:"카페 로고가 그려진 예쁜 에코백입니다.",                    priceImg:"money_9000.jpg",  orderText:"에코백 주세요" },
+    { name:"핸드폰 그립톡",    img:"grip.jpg",     description:"카페 로고가 그려진 핸드폰 그립톡입니다.",                  priceImg:"money_7000.jpg",  orderText:"핸드폰 그립톡 주세요" },
+    { name:"작은 키링",        img:"smallkey.jpg", description:"카페 로고가 새겨진 작은 키링입니다.",                      priceImg:"money_4000.jpg",  orderText:"작은 키링 하나 주세요" },
+    { name:"큰 키링",          img:"bigkey.jpg",   description:"카페 로고가 새겨진 큰 키링입니다.",                        priceImg:"money_6000.jpg",  orderText:"큰 키링 하나 주세요" },
+];
 
-    // ── 초기화면 버튼 ──
-    document.getElementById('view-menu').addEventListener('click', () => {
-        speak('메뉴를 선택하세요');
-        showPage(menuDiv);
-        renderMenuSections('all');
+/* ════════════════════════════════════════════════════════
+   ② 옵션 정의 — 새 옵션 추가 시 여기에 배열 추가
+   ════════════════════════════════════════════════════════ */
+
+// 커피 전용: 농도 옵션
+const STEP_STRENGTH = {
+    key: 'strength',
+    question: '☕ 커피 농도를 선택하세요',
+    ttsQ: '커피 농도를 선택하세요',
+    options: [
+        { value:'연하게',  emoji:'🌤️', label:'연하게'  },
+        { value:'보통',    emoji:'☕',  label:'보통'    },
+        { value:'진하게',  emoji:'🌑', label:'진하게'  },
+    ]
+};
+
+// 공통: 포장 여부
+const STEP_PACKING = {
+    key: 'packing',
+    question: '🛍️ 포장인가요, 먹고 가나요?',
+    ttsQ: '포장인가요, 먹고 가나요?',
+    options: [
+        { value:'포장',      emoji:'🛍️', label:'포장\n(가져갈게요)'   },
+        { value:'먹고가기',  emoji:'🪑', label:'먹고 가기\n(여기서요)' },
+    ]
+};
+
+// 공통: 얼음 양 (isIced=true 메뉴에만)
+const STEP_ICE = {
+    key: 'ice',
+    question: '🧊 얼음은 얼마나 넣을까요?',
+    ttsQ: '얼음은 얼마나 넣을까요?',
+    options: [
+        { value:'얼음 없이',  emoji:'🚫', label:'얼음 없이' },
+        { value:'얼음 조금',  emoji:'🧊', label:'얼음 조금' },
+        { value:'얼음 많이',  emoji:'❄️', label:'얼음 많이' },
+    ]
+};
+
+// 공통: 결제 수단
+const STEP_PAYMENT = {
+    key: 'payment',
+    question: '💳 어떻게 계산할까요?',
+    ttsQ: '어떻게 계산할까요?',
+    options: [
+        { value:'카드',  emoji:'💳', label:'카드' },
+        { value:'현금',  emoji:'💵', label:'현금' },
+    ]
+};
+
+/* ════════════════════════════════════════════════════════
+   ③ 카테고리 메타 — 여기만 수정하면 새 탭 추가 가능
+   ════════════════════════════════════════════════════════ */
+const categories = [
+    { key:"coffee",  emoji:"☕", label:"커피 (Coffee)"           },
+    { key:"noncoff", emoji:"🥛", label:"논커피 라떼 (Non-Coffee)" },
+    { key:"tea",     emoji:"🍵", label:"티·차 (Tea)"             },
+    { key:"ade",     emoji:"🍹", label:"에이드 & 아이스티 (Ade)"  },
+    { key:"syrup",   emoji:"🍯", label:"시럽 (Syrup)"            },
+];
+
+/* ════════════════════════════════════════════════════════
+   ④ 로직 영역 — 건드릴 필요 없음!
+   ════════════════════════════════════════════════════════ */
+
+// ── DOM 참조
+const mainPage       = document.getElementById('main-page');
+const menuDiv        = document.getElementById('menu');
+const menuSections   = document.getElementById('menu-sections');
+const detailView     = document.getElementById('detail-view');
+const detailDesc     = document.getElementById('detail-desc');
+const detailMenuImg  = document.getElementById('detail-menu-img');
+const detailPriceImg = document.getElementById('detail-price-img');
+const closeDetailBtn = document.getElementById('close-detail');
+const orderBtn       = document.getElementById('order-btn');
+const orderBtnLabel  = document.getElementById('order-btn-label');
+const speechBubble   = document.getElementById('speech-bubble');
+const goodsDiv       = document.getElementById('goods');
+const goodsList      = document.getElementById('goods-list');
+const modalOverlay   = document.getElementById('order-modal-overlay');
+const modalBox       = document.getElementById('order-modal');
+
+let currentDescText = '';
+let previousPage    = null;
+let savedScrollY    = 0;
+
+// ── 모달 상태
+let modalItem    = null;  // 현재 선택한 메뉴 객체
+let modalSteps   = [];    // 이 메뉴에 필요한 단계 배열
+let modalStepIdx = 0;     // 현재 단계 인덱스
+let modalChoices = {};    // { strength:'진하게', packing:'포장', ... }
+
+// ── 가격 포맷
+function formatPrice(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
+
+// ── TTS
+function speak(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ko-KR'; u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+}
+
+// ── 화면 전환
+function showPage(el) {
+    [mainPage, menuDiv, detailView, goodsDiv].forEach(p => p.classList.add('hidden'));
+    el.classList.remove('hidden');
+    if (el !== menuDiv && el !== goodsDiv) window.scrollTo(0, 0);
+}
+
+// ── 초기화면 버튼
+document.getElementById('view-menu').addEventListener('click', () => {
+    speak('메뉴를 선택하세요');
+    showPage(menuDiv);
+    renderMenuSections('all');
+});
+document.getElementById('view-goods').addEventListener('click', () => {
+    speak('물건을 선택하세요');
+    showPage(goodsDiv);
+    renderGoodsList();
+});
+
+// ── 카테고리 탭
+document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const labels = { all:'전체 메뉴', coffee:'커피', noncoff:'논커피 라떼', tea:'티와 차', ade:'에이드와 아이스티', syrup:'시럽' };
+        speak(labels[cat] + ' 메뉴를 보여드릴게요');
+        renderMenuSections(cat);
+        menuSections.scrollIntoView({ behavior:'smooth', block:'start' });
     });
-    document.getElementById('view-goods').addEventListener('click', () => {
-        speak('물건을 선택하세요');
-        showPage(goodsDiv);
-        renderGoodsList();
-    });
+});
 
-    // ── 카테고리 탭 클릭 ──
-    document.querySelectorAll('.cat-btn').forEach(btn => {
+// ── 다시 듣기
+document.getElementById('menu-replay').addEventListener('click',   () => speak('메뉴를 선택하세요'));
+document.getElementById('goods-replay').addEventListener('click',  () => speak('물건을 선택하세요'));
+document.getElementById('detail-replay').addEventListener('click', () => speak(currentDescText));
+
+// ── 뒤로 가기
+['menu-back','menu-back2'].forEach(id =>
+    document.getElementById(id).addEventListener('click', () => {
+        window.speechSynthesis.cancel(); showPage(mainPage);
+    })
+);
+['goods-back','goods-back2'].forEach(id =>
+    document.getElementById(id).addEventListener('click', () => {
+        window.speechSynthesis.cancel(); showPage(mainPage);
+    })
+);
+closeDetailBtn.addEventListener('click', () => {
+    window.speechSynthesis.cancel();
+    speechBubble.classList.add('hidden');
+    showPage(previousPage);
+    requestAnimationFrame(() => window.scrollTo(0, savedScrollY));
+});
+
+// ── 메뉴 섹션 렌더링
+function renderMenuSections(cat) {
+    menuSections.innerHTML = '';
+    const toShow = cat === 'all' ? categories : categories.filter(c => c.key === cat);
+    toShow.forEach(c => {
+        const items = menuData.filter(m => m.category === c.key);
+        if (!items.length) return;
+        appendMenuSection(c.emoji + ' ' + c.label, items, c.key);
+    });
+    if (!menuSections.innerHTML) {
+        menuSections.innerHTML = '<p class="no-results">해당 카테고리에 메뉴가 없습니다.</p>';
+    }
+}
+
+function appendMenuSection(title, items, catKey) {
+    const sec = document.createElement('div');
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'section-title';
+    titleEl.textContent = title;
+    sec.appendChild(titleEl);
+
+    const grid = document.createElement('div');
+    grid.className = 'cards-grid';
+
+    // ★ menuData.map → 카드 DOM 자동 생성 로직
+    items.map(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.dataset.cat = catKey;
+        card.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <h3>${item.name}</h3>
+        `;
+        card.addEventListener('click', () => {
+            savedScrollY = window.scrollY;
+            openOrderModal(item);   // 카드 클릭 → 모달 열기
+        });
+        return card;
+    }).forEach(card => grid.appendChild(card));
+
+    sec.appendChild(grid);
+    menuSections.appendChild(sec);
+}
+
+// ── 굿즈 목록 렌더링
+function renderGoodsList() {
+    goodsList.innerHTML = '';
+    goodsData.map(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3>`;
+        card.addEventListener('click', () => {
+            savedScrollY = window.scrollY;
+            previousPage = goodsDiv;
+            showGoodsDetail(item);
+        });
+        return card;
+    }).forEach(card => goodsList.appendChild(card));
+}
+
+// ── 굿즈 상세 (기존 방식 유지)
+function showGoodsDetail(item) {
+    const fullText = item.description + ' 가격은 ' + formatPrice(item.priceImg.match(/money_(\d+)/)?.[1] ?? 0) + '입니다.';
+    detailDesc.innerText    = item.description;
+    detailMenuImg.src       = item.img;
+    detailMenuImg.alt       = item.name;
+    detailPriceImg.src      = item.priceImg;
+    currentDescText         = fullText;
+    orderBtnLabel.innerHTML = '구매할래요<br><small>(갖고싶어요)</small>';
+    speechBubble.classList.add('hidden');
+    showPage(detailView);
+    speak(fullText);
+}
+orderBtn.addEventListener('click', () => {
+    speechBubble.textContent = '🔊 "' + detailDesc.innerText + ' 구매할래요"';
+    speechBubble.classList.remove('hidden');
+    speak(detailDesc.innerText + ' 구매할래요');
+});
+
+/* ════════════════════════════════════════════════════════
+   ── 주문 옵션 모달 로직
+   ════════════════════════════════════════════════════════
+
+   흐름:
+   1. openOrderModal(item) — 아이템에 맞는 단계 배열 생성
+   2. renderModalStep()    — 현재 단계 UI 그리기 + TTS
+   3. 옵션 선택 → 저장 → 다음 단계
+   4. 마지막 단계 끝 → renderModalDone() — 요약 + TTS 주문 문장
+   ════════════════════════════════════════════════════════ */
+
+function openOrderModal(item) {
+    modalItem    = item;
+    modalChoices = {};
+    modalStepIdx = 0;
+
+    // 이 메뉴에 필요한 단계를 동적으로 조립
+    modalSteps = [];
+    if (item.hasCoffee)  modalSteps.push(STEP_STRENGTH); // 커피면 농도
+    modalSteps.push(STEP_PACKING);                        // 항상: 포장여부
+    if (item.isIced)     modalSteps.push(STEP_ICE);       // 아이스면 얼음
+    modalSteps.push(STEP_PAYMENT);                        // 항상: 결제
+
+    modalOverlay.classList.remove('hidden');
+    renderModalStep();
+}
+
+function closeModal() {
+    modalOverlay.classList.add('hidden');
+    modalBox.innerHTML = '';
+    window.speechSynthesis.cancel();
+}
+
+// 오버레이 배경 클릭 시 닫기
+modalOverlay.addEventListener('click', e => {
+    if (e.target === modalOverlay) closeModal();
+});
+
+function buildProgressDots() {
+    const wrap = document.createElement('div');
+    wrap.className = 'modal-progress';
+    modalSteps.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'modal-step-dot' +
+            (i < modalStepIdx ? ' done' : i === modalStepIdx ? ' current' : '');
+        wrap.appendChild(dot);
+    });
+    return wrap;
+}
+
+function renderModalStep() {
+    const step = modalSteps[modalStepIdx];
+    modalBox.innerHTML = '';
+
+    // 헤더
+    const header = document.createElement('div');
+    header.className = 'modal-header';
+    header.innerHTML = `
+        <span class="modal-item-name">${modalItem.name}</span>
+        <button class="modal-close-x" id="modal-close-x">✕</button>
+    `;
+    modalBox.appendChild(header);
+    document.getElementById('modal-close-x').addEventListener('click', closeModal);
+
+    // 진행 단계 점
+    modalBox.appendChild(buildProgressDots());
+
+    // 질문
+    const q = document.createElement('div');
+    q.className = 'modal-question';
+    q.textContent = step.question;
+    modalBox.appendChild(q);
+
+    // 옵션 버튼들 (step.options.map → 버튼 자동 생성)
+    const opts = document.createElement('div');
+    opts.className = 'modal-options';
+
+    step.options.map(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'opt-btn';
+        btn.innerHTML = `<span class="opt-emoji">${opt.emoji}</span>${opt.label.replace('\n','<br>')}`;
+
+        // 이미 선택한 항목이면 selected 표시 (뒤로 갔다 온 경우 대비)
+        if (modalChoices[step.key] === opt.value) btn.classList.add('selected');
+
         btn.addEventListener('click', () => {
-            const cat = btn.dataset.cat;
-            activeCat = cat;
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const labels = { all:'전체 메뉴', coffee:'커피', noncoff:'논커피 라떼', tea:'티와 차', ade:'에이드와 아이스티', syrup:'시럽' };
-            speak(labels[cat] + '를 보여드릴게요');
-            renderMenuSections(cat);
-            // 섹션 맨 위로
-            menuSections.scrollIntoView({ behavior:'smooth', block:'start' });
+            // 선택 저장
+            modalChoices[step.key] = opt.value;
+            speak(opt.label.replace('\n',' '));
+
+            // 모든 옵션 버튼 selected 해제 후 이것만 표시
+            opts.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            // 잠깐 후 다음 단계
+            setTimeout(() => {
+                modalStepIdx++;
+                if (modalStepIdx < modalSteps.length) {
+                    renderModalStep();
+                } else {
+                    renderModalDone();
+                }
+            }, 400);
         });
-    });
+        return btn;
+    }).forEach(btn => opts.appendChild(btn));
 
-    // ── 다시 듣기 ──
-    document.getElementById('menu-replay').addEventListener('click', () => speak('메뉴를 선택하세요'));
-    document.getElementById('goods-replay').addEventListener('click', () => speak('물건을 선택하세요'));
-    document.getElementById('detail-replay').addEventListener('click', () => speak(currentDescText));
+    modalBox.appendChild(opts);
 
-    // ── 뒤로 가기 ──
-    ['menu-back','menu-back2'].forEach(id => {
-        document.getElementById(id).addEventListener('click', () => {
-            window.speechSynthesis.cancel();
-            showPage(mainPage);
-        });
-    });
-    ['goods-back','goods-back2'].forEach(id => {
-        document.getElementById(id).addEventListener('click', () => {
-            window.speechSynthesis.cancel();
-            showPage(mainPage);
-        });
-    });
-    closeDetailBtn.addEventListener('click', () => {
-        window.speechSynthesis.cancel();
-        speechBubble.classList.add('hidden');
-        showPage(previousPage);
-        requestAnimationFrame(() => window.scrollTo(0, savedScrollY));
-    });
+    // TTS
+    speak(step.ttsQ);
+}
 
-    // ── 메뉴 섹션 렌더링 (카테고리 필터) ──
-    function renderMenuSections(cat) {
-        menuSections.innerHTML = '';
+function renderModalDone() {
+    // 주문 문장 조립
+    const parts = [];
+    if (modalChoices.strength) parts.push(modalChoices.strength);
+    parts.push(modalItem.name);
+    if (modalChoices.ice)      parts.push(modalChoices.ice + '으로');
+    if (modalChoices.packing)  parts.push(modalChoices.packing + '으로');
+    parts.push(modalChoices.payment + '로 계산할게요');
+    const orderSentence = parts.join(', ') + '.';
 
-        if (cat === 'all') {
-            // 전체: 카테고리별 섹션 구분
-            categories.forEach(c => {
-                const items = menuData.filter(m => m.category === c.key);
-                if (!items.length) return;
-                appendSection(c.emoji + ' ' + c.label, items, c.key);
-            });
-        } else {
-            const items = menuData.filter(m => m.category === cat);
-            if (!items.length) {
-                menuSections.innerHTML = '<p class="no-results">해당 카테고리에 메뉴가 없습니다.</p>';
-                return;
-            }
-            const c = categories.find(x => x.key === cat);
-            appendSection(c.emoji + ' ' + c.label, items, cat);
-        }
-    }
+    // 요약 텍스트 (화면 표시용)
+    const summaryLines = modalSteps.map(s =>
+        `${s.question.replace(/^[^\s]+\s/, '')}  →  <b>${modalChoices[s.key]}</b>`
+    ).join('<br>');
 
-    function appendSection(title, items, catKey) {
-        const sec = document.createElement('div');
+    modalBox.innerHTML = '';
 
-        const titleEl = document.createElement('div');
-        titleEl.className = 'section-title';
-        titleEl.innerHTML = title;
-        sec.appendChild(titleEl);
+    const header = document.createElement('div');
+    header.className = 'modal-header';
+    header.innerHTML = `
+        <span class="modal-item-name">${modalItem.name}</span>
+        <button class="modal-close-x" id="modal-close-x2">✕</button>
+    `;
+    modalBox.appendChild(header);
+    document.getElementById('modal-close-x2').addEventListener('click', closeModal);
 
-        const grid = document.createElement('div');
-        grid.className = 'cards-grid';
+    const done = document.createElement('div');
+    done.className = 'modal-done';
+    done.innerHTML = `
+        <div class="done-emoji">✅</div>
+        <div class="done-title">주문 내용을 확인해요!</div>
+        <div class="done-summary">${summaryLines}</div>
+        <div class="done-speech">🔊 "${orderSentence}"</div>
+        <div class="modal-done-btns">
+            <button class="btn-speak-order" id="btn-speak">📢 직원에게 말하기</button>
+            <button class="btn-replay-done" id="btn-replay-done">🔊 다시 듣기</button>
+            <button class="btn-cancel-modal" id="btn-cancel">✕ 취소</button>
+        </div>
+    `;
+    modalBox.appendChild(done);
 
-        items.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'menu-card';
-            card.dataset.cat = catKey;
-            card.innerHTML = `
-                <img src="${item.img}" alt="${item.name}">
-                <h3>${item.name}</h3>
-            `;
-            card.onclick = () => {
-                savedScrollY = window.scrollY;
-                previousPage = menuDiv;
-                showDetail(item, '주문할래요', '(먹고싶어요)');
-            };
-            grid.appendChild(card);
-        });
+    document.getElementById('btn-speak').addEventListener('click',      () => speak(orderSentence));
+    document.getElementById('btn-replay-done').addEventListener('click',() => speak(orderSentence));
+    document.getElementById('btn-cancel').addEventListener('click',     closeModal);
 
-        sec.appendChild(grid);
-        menuSections.appendChild(sec);
-    }
-
-    // ── 굿즈 목록 ──
-    function renderGoodsList() {
-        goodsList.innerHTML = '';
-        goodsData.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'menu-card';
-            card.innerHTML = `<img src="${item.img}" alt="${item.name}"><h3>${item.name}</h3>`;
-            card.onclick = () => {
-                savedScrollY = window.scrollY;
-                previousPage = goodsDiv;
-                showDetail(item, '구매할래요', '(갖고싶어요)');
-            };
-            goodsList.appendChild(card);
-        });
-    }
-
-    // ── 상세 보기 ──
-    function showDetail(item, btnMain, btnSub) {
-        const price   = extractPrice(item.priceImg);
-        const fullText= item.description + ' 가격은 ' + price + '원입니다.';
-        detailDesc.innerText    = item.description;
-        detailMenuImg.src       = item.img;
-        detailMenuImg.alt       = item.name;
-        detailPriceImg.src      = item.priceImg;
-        currentOrderText        = item.orderText;
-        currentDescText         = fullText;
-        orderBtnLabel.innerHTML = `${btnMain}<br><small>${btnSub}</small>`;
-        speechBubble.classList.add('hidden');
-        showPage(detailView);
-        speak(fullText);
-    }
-
-    // ── 주문 버튼 ──
-    orderBtn.addEventListener('click', () => {
-        speechBubble.textContent = '🔊 "' + currentOrderText + '"';
-        speechBubble.classList.remove('hidden');
-        speak(currentOrderText);
-    });
-
-    // ── 화면 전환 ──
-    function showPage(el) {
-        [mainPage, menuDiv, detailView, goodsDiv].forEach(p => p.classList.add('hidden'));
-        el.classList.remove('hidden');
-        if (el !== menuDiv && el !== goodsDiv) window.scrollTo(0, 0);
-    }
-    </script>
+    speak(orderSentence);
+}
+</script>
 </body>
 </html>
